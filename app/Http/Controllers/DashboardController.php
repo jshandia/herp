@@ -65,6 +65,9 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function blank_page_index(){
+        return view('blank.blank');
+    }
     public function account_dashboard_index()
     {
 

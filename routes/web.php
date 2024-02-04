@@ -180,10 +180,10 @@ Route::get('/verify/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->n
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     ->name('verification.send');
 
-Route::get('/', [DashboardController::class, 'account_dashboard_index'])->name('home')->middleware(['XSS', 'revalidate']);
+Route::get('/', [DashboardController::class, 'blank_page_index'])->name('home')->middleware(['XSS', 'revalidate']);
 
-Route::get('/home', [DashboardController::class, 'account_dashboard_index'])->name('home')->middleware(['XSS', 'revalidate']);
-Route::get('/', [DashboardController::class, 'account_dashboard_index'])->name('dashboard')->middleware(['XSS', 'revalidate']);
+Route::get('/home', [DashboardController::class, 'blank_page_index'])->name('home')->middleware(['XSS', 'revalidate']);
+Route::get('/', [DashboardController::class, 'blank_page_index'])->name('dashboard')->middleware(['XSS', 'revalidate']);
 
 //Route::get('/register/{lang?}', function () {
 //    $settings = Utility::settings();
