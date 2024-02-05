@@ -66,7 +66,12 @@ class DashboardController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function blank_page_index(){
-        return view('blank.blank');
+        if(Auth::check()){
+            return view('blank.blank');
+        }else{
+            return $this->account_dashboard_index();
+        }
+        
     }
     public function account_dashboard_index()
     {
