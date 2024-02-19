@@ -38,24 +38,3 @@
 <!--------------------- Start System Setup ----------------------------------->
 @include('partials.admin.items.admin.subitems.systemsetup')
 <!--------------------- End System Setup ----------------------------------->
-
-
-<!--
-
-
-Dashboard
-Logistic
-Procurement
-Payable
-POS
-Sales
-Receivable
-Accounting
-HRM
-User Management
-CRM
-Project
-Others
-Setting
-
--->
