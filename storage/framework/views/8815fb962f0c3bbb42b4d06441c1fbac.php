@@ -152,7 +152,7 @@
             <?php if(Gate::check('manage project task stage') || Gate::check('manage bug status')): ?>
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage project task stage')): ?>
             <li class="dash-item  <?php echo e(Request::route()->getName() == 'project-task-stages.index' ? 'active' : ''); ?>">
-              <a class="dash-link" href="<?php echo e(route('project-task-stages.index')); ?>"><?php echo e(__('Project Task Stages')); ?></a>
+              <a class="dash-link" href="<?php echo e(route('project-task-stages.index')); ?>"><?php echo e(__('Task Stages')); ?></a>
             </li>
             <?php endif; ?>
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage bug status')): ?>
