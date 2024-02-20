@@ -24,14 +24,14 @@
                             <li
                                 class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'settings' ? ' active' : ''); ?>">
                                 <a href="<?php echo e(route('settings')); ?>"
-                                    class="dash-link"><?php echo e(__('System Settings')); ?></a>
+                                    class="dash-link"><?php echo e(__('System')); ?></a>
                             </li>
                         <?php endif; ?>
                         <?php if(Gate::check('manage company plan')): ?>
                             <li
                                 class="dash-item<?php echo e(Request::route()->getName() == 'plans.index' || Request::route()->getName() == 'stripe' ? ' active' : ''); ?>">
                                 <a href="<?php echo e(route('plans.index')); ?>"
-                                    class="dash-link"><?php echo e(__('Setup Subscription Plan')); ?></a>
+                                    class="dash-link"><?php echo e(__('Subscription Plan')); ?></a>
                             </li>
                         <?php endif; ?>
 

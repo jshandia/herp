@@ -37,25 +37,4 @@
 <!--End Others-->
 <!--------------------- Start System Setup ----------------------------------->
 <?php echo $__env->make('partials.admin.items.admin.subitems.systemsetup', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<!--------------------- End System Setup ----------------------------------->
-
-
-<!--
-
-
-Dashboard
-Logistic
-Procurement
-Payable
-POS
-Sales
-Receivable
-Accounting
-HRM
-User Management
-CRM
-Project
-Others
-Setting
-
---><?php /**PATH C:\xampp\htdocs\herp\resources\views/partials/admin/items/admin/subitemslist.blade.php ENDPATH**/ ?>
+<!--------------------- End System Setup -----------------------------------><?php /**PATH C:\xampp\htdocs\herp\resources\views/partials/admin/items/admin/subitemslist.blade.php ENDPATH**/ ?>

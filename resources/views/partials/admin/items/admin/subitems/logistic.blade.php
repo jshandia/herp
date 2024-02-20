@@ -31,7 +31,7 @@
                     </li>
                     @endif
                     <li class="dash-item {{ request()->is('reports-warehouse') ? 'active' : '' }}">
-                        <a class="dash-link" href="{{ route('report.warehouse') }}">{{ __('Warehouse Report') }}</a>
+                        <a class="dash-link" href="{{ route('report.warehouse') }}">{{ __('Warehouse') }}</a>
                     </li>
                 </ul>
             </li>

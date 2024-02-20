@@ -1,4 +1,4 @@
-<li class="dash-item dash-hasmenu">
+<li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'crm-dashboard' || Request::segment(1) == 'leads' || Request::segment(1) == 'deals' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'contract' || Request::segment(1) == 'contract' || Request::segment(1) == 'reports-lead' || Request::segment(1) == 'reports-deal' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'project' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? ' active dash-trigger' : ''); ?>">
   <a href="#!" class="dash-link ">
     <span class="dash-micon">
       <i class="ti ti-layers-difference"></i>
@@ -11,7 +11,7 @@
   <ul class="dash-submenu">
     <?php if(!empty($userPlan) &&  $userPlan->crm == 1): ?>
     <?php if(Gate::check('manage lead') || Gate::check('manage deal') || Gate::check('manage form builder') || Gate::check('manage contract')): ?>
-    <li class="dash-item dash-hasmenu">
+    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'crm-dashboard' || Request::segment(1) == 'leads' || Request::segment(1) == 'deals' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'contract' || Request::segment(1) == 'contract' || Request::segment(1) == 'reports-lead' || Request::segment(1) == 'reports-deal' || Request::segment(1) == 'pipelines' ? ' active dash-trigger' : ''); ?>">
       <a class="dash-link" href="#"><?php echo e(__('CRM')); ?>
 
         <span class="dash-arrow">
@@ -61,8 +61,19 @@
         </li>
         <!--end crm report-->
         <?php if(Gate::check('manage lead stage') || Gate::check('manage pipeline') || Gate::check('manage source') || Gate::check('manage label') || Gate::check('manage stage')): ?>
-        <li class="dash-item  <?php echo e(Request::segment(1) == 'stages' || Request::segment(1) == 'labels' || Request::segment(1) == 'sources' || Request::segment(1) == 'lead_stages' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' ? 'active dash-trigger' : ''); ?>">
-          <a class="dash-link" href="<?php echo e(route('pipelines.index')); ?>   "><?php echo e(__('CRM System Setup')); ?></a>
+        <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'pipelines' ? 'active dash-trigger' : ''); ?>" href="#crm-settings" data-toggle="collapse" role="button" aria-expanded="<?php echo e(Request::segment(1) == 'pipelines' ? 'true' : 'false'); ?>">
+          <a class="dash-link" href="#"><?php echo e(__('Settings')); ?>
+
+            <span class="dash-arrow">
+              <i data-feather="chevron-right"></i>
+            </span>
+          </a>
+          <ul class="dash-submenu">
+            <li class="dash-item  <?php echo e(request()->is('pipelines') ? 'active' : ''); ?>">
+              <a class="dash-link" href="<?php echo e(route('pipelines.index')); ?>   "><?php echo e(__('Field')); ?></a>
+            </li>
+          </ul>
+          
         </li>
         <?php endif; ?>
       </ul>
@@ -71,7 +82,7 @@
     <?php endif; ?>
     <?php if(!empty($userPlan) &&  $userPlan->project == 1): ?>
     <?php if(Gate::check('manage project')): ?>
-    <li class="dash-item dash-hasmenu">
+    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'project' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? 'active dash-trigger' : ''); ?>">
       <a class="dash-link" href="#"><?php echo e(__('Projects')); ?>
 
         <span class="dash-arrow">
@@ -114,20 +125,31 @@
           <a class="dash-link" href="<?php echo e(route('time.tracker')); ?>"><?php echo e(__('Tracker')); ?></a>
         </li>
         <?php endif; ?>
-        <?php if(\Auth::user()->type == 'company' || \Auth::user()->type == 'Employee'): ?>
-        <li class="dash-item  <?php echo e(Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : ''); ?>">
-          <a class="dash-link" href="<?php echo e(route('project_report.index')); ?>"><?php echo e(__('Project Report')); ?></a>
-        </li>
-        <?php endif; ?>
-        <?php if(Gate::check('manage project task stage') || Gate::check('manage bug status')): ?>
-        <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : ''); ?>">
-          <a class="dash-link" href="#"><?php echo e(__('Project System Setup')); ?>
+        
+        <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'project_report' ? 'active dash-trigger' : ''); ?>">
+          <a class="dash-link" href="#"><?php echo e(__('Reports')); ?>
 
             <span class="dash-arrow">
               <i data-feather="chevron-right"></i>
             </span>
           </a>
           <ul class="dash-submenu">
+             <?php if(\Auth::user()->type == 'company' || \Auth::user()->type == 'Employee'): ?>
+            <li class="dash-item  <?php echo e(Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : ''); ?>">
+              <a class="dash-link" href="<?php echo e(route('project_report.index')); ?>"><?php echo e(__('Projects')); ?></a>
+            </li>
+            <?php endif; ?>
+          </ul>
+        </li>
+        <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : ''); ?>">
+          <a class="dash-link" href="#"><?php echo e(__('Settings')); ?>
+
+            <span class="dash-arrow">
+              <i data-feather="chevron-right"></i>
+            </span>
+          </a>
+          <ul class="dash-submenu">
+            <?php if(Gate::check('manage project task stage') || Gate::check('manage bug status')): ?>
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage project task stage')): ?>
             <li class="dash-item  <?php echo e(Request::route()->getName() == 'project-task-stages.index' ? 'active' : ''); ?>">
               <a class="dash-link" href="<?php echo e(route('project-task-stages.index')); ?>"><?php echo e(__('Project Task Stages')); ?></a>
@@ -138,9 +160,9 @@
               <a class="dash-link" href="<?php echo e(route('bugstatus.index')); ?>"><?php echo e(__('Bug Status')); ?></a>
             </li>
             <?php endif; ?>
+            <?php endif; ?>
           </ul>
         </li>
-        <?php endif; ?>
       </ul>
     </li>
     <?php endif; ?>

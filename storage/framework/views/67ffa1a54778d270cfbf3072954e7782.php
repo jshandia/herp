@@ -33,7 +33,7 @@
                     </li>
                     <?php endif; ?>
                     <li class="dash-item <?php echo e(request()->is('reports-warehouse') ? 'active' : ''); ?>">
-                        <a class="dash-link" href="<?php echo e(route('report.warehouse')); ?>"><?php echo e(__('Warehouse Report')); ?></a>
+                        <a class="dash-link" href="<?php echo e(route('report.warehouse')); ?>"><?php echo e(__('Warehouse')); ?></a>
                     </li>
                 </ul>
             </li>

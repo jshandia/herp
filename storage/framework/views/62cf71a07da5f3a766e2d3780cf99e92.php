@@ -25,7 +25,7 @@
       </a>
       <ul class="dash-submenu">
         <li class="dash-item <?php echo e(Request::route()->getName() == 'report.sales' ? ' active' : ''); ?>">
-          <a class="dash-link" href="<?php echo e(route('report.sales')); ?>"><?php echo e(__('Sales Report')); ?></a>
+          <a class="dash-link" href="<?php echo e(route('report.sales')); ?>"><?php echo e(__('Sales')); ?></a>
         </li>
       </ul>
     </li>

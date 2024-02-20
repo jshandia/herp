@@ -1,4 +1,4 @@
-<li class="dash-item dash-hasmenu">
+<li class="dash-item dash-hasmenu {{ Request::segment(1) == 'crm-dashboard' || Request::segment(1) == 'leads' || Request::segment(1) == 'deals' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'contract' || Request::segment(1) == 'contract' || Request::segment(1) == 'reports-lead' || Request::segment(1) == 'reports-deal' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'project' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? ' active dash-trigger' : '' }}">
   <a href="#!" class="dash-link ">
     <span class="dash-micon">
       <i class="ti ti-layers-difference"></i>
@@ -11,7 +11,7 @@
   <ul class="dash-submenu">
     @if(!empty($userPlan) &&  $userPlan->crm == 1)
     @if (Gate::check('manage lead') || Gate::check('manage deal') || Gate::check('manage form builder') || Gate::check('manage contract'))
-    <li class="dash-item dash-hasmenu">
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'crm-dashboard' || Request::segment(1) == 'leads' || Request::segment(1) == 'deals' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'contract' || Request::segment(1) == 'contract' || Request::segment(1) == 'reports-lead' || Request::segment(1) == 'reports-deal' || Request::segment(1) == 'pipelines' ? ' active dash-trigger' : '' }}">
       <a class="dash-link" href="#">{{ __('CRM') }}
         <span class="dash-arrow">
           <i data-feather="chevron-right"></i>
@@ -59,8 +59,18 @@
         </li>
         <!--end crm report-->
         @if (Gate::check('manage lead stage') || Gate::check('manage pipeline') || Gate::check('manage source') || Gate::check('manage label') || Gate::check('manage stage'))
-        <li class="dash-item  {{ Request::segment(1) == 'stages' || Request::segment(1) == 'labels' || Request::segment(1) == 'sources' || Request::segment(1) == 'lead_stages' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' ? 'active dash-trigger' : '' }}">
-          <a class="dash-link" href="{{ route('pipelines.index') }}   ">{{ __('CRM System Setup') }}</a>
+        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'pipelines' ? 'active dash-trigger' : '' }}" href="#crm-settings" data-toggle="collapse" role="button" aria-expanded="{{ Request::segment(1) == 'pipelines' ? 'true' : 'false' }}">
+          <a class="dash-link" href="#">{{ __('Settings') }}
+            <span class="dash-arrow">
+              <i data-feather="chevron-right"></i>
+            </span>
+          </a>
+          <ul class="dash-submenu">
+            <li class="dash-item  {{ request()->is('pipelines') ? 'active' : '' }}">
+              <a class="dash-link" href="{{ route('pipelines.index') }}   ">{{ __('Field') }}</a>
+            </li>
+          </ul>
+          
         </li>
         @endif
       </ul>
@@ -69,7 +79,7 @@
     @endif
     @if(!empty($userPlan) &&  $userPlan->project == 1)
     @if (Gate::check('manage project'))
-    <li class="dash-item dash-hasmenu">
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'project' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? 'active dash-trigger' : '' }}">
       <a class="dash-link" href="#">{{ __('Projects') }}
         <span class="dash-arrow">
           <i data-feather="chevron-right"></i>
@@ -111,22 +121,32 @@
           <a class="dash-link" href="{{ route('time.tracker') }}">{{ __('Tracker') }}</a>
         </li>
         @endif
-        @if (\Auth::user()->type == 'company' || \Auth::user()->type == 'Employee')
-        <li class="dash-item  {{ Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : '' }}">
-          <a class="dash-link" href="{{ route('project_report.index') }}">{{ __('Project Report') }}</a>
-        </li>
-        @endif
-        @if (Gate::check('manage project task stage') || Gate::check('manage bug status'))
-        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : '' }}">
-          <a class="dash-link" href="#">{{ __('Project System Setup') }}
+        
+        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'project_report' ? 'active dash-trigger' : '' }}">
+          <a class="dash-link" href="#">{{ __('Reports') }}
             <span class="dash-arrow">
               <i data-feather="chevron-right"></i>
             </span>
           </a>
           <ul class="dash-submenu">
+             @if (\Auth::user()->type == 'company' || \Auth::user()->type == 'Employee')
+            <li class="dash-item  {{ Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : '' }}">
+              <a class="dash-link" href="{{ route('project_report.index') }}">{{ __('Projects') }}</a>
+            </li>
+            @endif
+          </ul>
+        </li>
+        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : '' }}">
+          <a class="dash-link" href="#">{{ __('Settings') }}
+            <span class="dash-arrow">
+              <i data-feather="chevron-right"></i>
+            </span>
+          </a>
+          <ul class="dash-submenu">
+            @if (Gate::check('manage project task stage') || Gate::check('manage bug status'))
             @can('manage project task stage')
             <li class="dash-item  {{ Request::route()->getName() == 'project-task-stages.index' ? 'active' : '' }}">
-              <a class="dash-link" href="{{ route('project-task-stages.index') }}">{{ __('Project Task Stages') }}</a>
+              <a class="dash-link" href="{{ route('project-task-stages.index') }}">{{ __('Task Stages') }}</a>
             </li>
             @endcan
             @can('manage bug status')
@@ -134,9 +154,9 @@
               <a class="dash-link" href="{{ route('bugstatus.index') }}">{{ __('Bug Status') }}</a>
             </li>
             @endcan
+            @endif
           </ul>
         </li>
-        @endif
       </ul>
     </li>
     @endif

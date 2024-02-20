@@ -24,7 +24,7 @@
       </a>
       <ul class="dash-submenu">
         <li class="dash-item {{ Request::route()->getName() == 'report.sales' ? ' active' : '' }}">
-          <a class="dash-link" href="{{ route('report.sales') }}">{{ __('Sales Report') }}</a>
+          <a class="dash-link" href="{{ route('report.sales') }}">{{ __('Sales') }}</a>
         </li>
       </ul>
     </li>

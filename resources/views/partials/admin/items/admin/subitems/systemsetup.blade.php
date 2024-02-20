@@ -24,14 +24,14 @@
                             <li
                                 class="dash-item dash-hasmenu {{ Request::segment(1) == 'settings' ? ' active' : '' }}">
                                 <a href="{{ route('settings') }}"
-                                    class="dash-link">{{ __('System Settings') }}</a>
+                                    class="dash-link">{{ __('System') }}</a>
                             </li>
                         @endif
                         @if (Gate::check('manage company plan'))
                             <li
                                 class="dash-item{{ Request::route()->getName() == 'plans.index' || Request::route()->getName() == 'stripe' ? ' active' : '' }}">
                                 <a href="{{ route('plans.index') }}"
-                                    class="dash-link">{{ __('Setup Subscription Plan') }}</a>
+                                    class="dash-link">{{ __('Subscription Plan') }}</a>
                             </li>
                         @endif
 

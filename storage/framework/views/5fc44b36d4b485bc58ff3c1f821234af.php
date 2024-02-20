@@ -1,6 +1,4 @@
-<?php if(
-            \Auth::user()->type != 'super admin' &&
-                (Gate::check('manage user') || Gate::check('manage role') || Gate::check('manage client'))): ?>
+<?php if(\Auth::user()->type != 'super admin' && (Gate::check('manage user') || Gate::check('manage role') || Gate::check('manage client'))): ?>
             <li
                 class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'users' ||
                 Request::segment(1) == 'roles' ||
