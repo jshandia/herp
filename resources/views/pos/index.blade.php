@@ -75,7 +75,7 @@
             <div class="col-12">
                 <div class="mt-2 pos-top-bar bg-color d-flex justify-content-between bg-primary">
                     <span class="text-white">{{__('POS')}}</span>
-                    <a  href="{{ route('dashboard') }}" class="text-white"><i class="ti ti-home" style="font-size: 20px;"></i> </a>
+                    <a  href="{{ route('pos.report') }}" class="text-white"><i class="ti ti-home" style="font-size: 20px;"></i> </a>
                 </div>
             </div>
         </div>
