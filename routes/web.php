@@ -1492,6 +1492,10 @@ Route::group(['middleware' => ['verified']], function () {
 
     );
     Route::get('pos-print-setting', [SystemController::class, 'posPrintIndex'])->name('pos.print.setting')->middleware(['auth', 'XSS']);
+    Route::get('purchase-print-setting', [SystemController::class, 'purchasePrintIndex'])->name('purchase.print.setting')->middleware(['auth', 'XSS']);
+    Route::get('sales-print-setting', [SystemController::class, 'salesPrintIndex'])->name('sales.print.setting')->middleware(['auth', 'XSS']);
+    Route::get('receivable-print-setting', [SystemController::class, 'receivablePrintIndex'])->name('receivable.print.setting')->middleware(['auth', 'XSS']);
+    Route::get('payable-print-setting', [SystemController::class, 'payablePrintIndex'])->name('payable.print.setting')->middleware(['auth', 'XSS']);
     Route::get('purchase/preview/{template}/{color}', [PurchaseController::class, 'previewPurchase'])->name('purchase.preview')->middleware(['auth', 'XSS']);
     Route::get('pos/preview/{template}/{color}', [PosController::class, 'previewPos'])->name('pos.preview')->middleware(['auth', 'XSS']);
 

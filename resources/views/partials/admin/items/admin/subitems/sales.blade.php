@@ -28,7 +28,7 @@
         </li>
       </ul>
     </li>
-    @if (Gate::check('manage customer') || Gate::check('manage proposal') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note'))
+    @if (Gate::check('manage customer') || Gate::check('manage proposal') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note') || Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer'))
     <li class="dash-item dash-hasmenu">
       <a class="dash-link" href="#">{{ __('Settings') }}
         <span class="dash-arrow">
@@ -39,6 +39,11 @@
         @if (Gate::check('manage customer'))
           <li class="dash-item {{ Request::segment(1) == 'customer' ? 'active' : '' }}">
             <a class="dash-link" href="{{ route('customer.index') }}">{{ __('Customer') }}</a>
+          </li>
+          @endif
+          @if(Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer'))
+          <li class="dash-item {{ Request::route()->getName() == 'sales-print-setting' ? ' active' : '' }}">
+            <a class="dash-link" href="{{ route('sales.print.setting') }}">{{ __('Print') }}</a>
           </li>
           @endif
       </ul>

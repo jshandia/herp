@@ -41,6 +41,11 @@
                         </span>
                     </a>
                     <ul class="dash-submenu">
+                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage pos')): ?>
+                        <li class="dash-item <?php echo e(Request::route()->getName() == 'purchase-print-setting' ? ' active' : ''); ?>">
+                            <a class="dash-link" href="<?php echo e(route('purchase.print.setting')); ?>"><?php echo e(__('Print')); ?></a>
+                        </li>
+                        <?php endif; ?>
                         <?php if(Gate::check('manage vender')): ?>
                             <li class="dash-item">
                                 <a class="dash-link" href="<?php echo e(route('vender.index')); ?>"><?php echo e(__('Suppiler')); ?></a>

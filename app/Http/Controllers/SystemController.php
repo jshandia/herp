@@ -1013,6 +1013,36 @@ class SystemController extends Controller
             return redirect()->back()->with('error', 'Permission denied.');
         }
     }
+    public function salesPrintIndex()
+    {
+        if (\Auth::user()->can('manage print settings')) {
+            $settings = Utility::settings();
+
+            return view('settings.sales', compact('settings'));
+        } else {
+            return redirect()->back()->with('error', 'Permission denied.');
+        }
+    }
+    public function receivablePrintIndex()
+    {
+        if (\Auth::user()->can('manage print settings')) {
+            $settings = Utility::settings();
+
+            return view('settings.receivable', compact('settings'));
+        } else {
+            return redirect()->back()->with('error', 'Permission denied.');
+        }
+    }
+    public function payablePrintIndex()
+    {
+        if (\Auth::user()->can('manage print settings')) {
+            $settings = Utility::settings();
+
+            return view('settings.payable', compact('settings'));
+        } else {
+            return redirect()->back()->with('error', 'Permission denied.');
+        }
+    }
 
     public function posPrintIndex()
     {
@@ -1020,6 +1050,17 @@ class SystemController extends Controller
             $settings = Utility::settings();
 
             return view('settings.pos', compact('settings'));
+        } else {
+            return redirect()->back()->with('error', 'Permission denied.');
+        }
+    }
+
+    public function purchasePrintIndex()
+    {
+        if (\Auth::user()->can('manage print settings')) {
+            $settings = Utility::settings();
+
+            return view('settings.purchase', compact('settings'));
         } else {
             return redirect()->back()->with('error', 'Permission denied.');
         }

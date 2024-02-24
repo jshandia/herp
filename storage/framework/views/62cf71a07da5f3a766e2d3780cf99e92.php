@@ -29,7 +29,7 @@
         </li>
       </ul>
     </li>
-    <?php if(Gate::check('manage customer') || Gate::check('manage proposal') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note')): ?>
+    <?php if(Gate::check('manage customer') || Gate::check('manage proposal') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note') || Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer')): ?>
     <li class="dash-item dash-hasmenu">
       <a class="dash-link" href="#"><?php echo e(__('Settings')); ?>
 
@@ -41,6 +41,11 @@
         <?php if(Gate::check('manage customer')): ?>
           <li class="dash-item <?php echo e(Request::segment(1) == 'customer' ? 'active' : ''); ?>">
             <a class="dash-link" href="<?php echo e(route('customer.index')); ?>"><?php echo e(__('Customer')); ?></a>
+          </li>
+          <?php endif; ?>
+          <?php if(Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer')): ?>
+          <li class="dash-item <?php echo e(Request::route()->getName() == 'sales-print-setting' ? ' active' : ''); ?>">
+            <a class="dash-link" href="<?php echo e(route('sales.print.setting')); ?>"><?php echo e(__('Print')); ?></a>
           </li>
           <?php endif; ?>
       </ul>

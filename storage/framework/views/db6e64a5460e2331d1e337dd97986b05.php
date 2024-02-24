@@ -52,79 +52,15 @@
     <div class="col-sm-12 mt-4">
         <div class="card">
             <div class="card-body">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-purchase-tab" data-bs-toggle="pill" href="#pills-purchase" role="tab" aria-controls="pills-purchase" aria-selected="false"><?php echo e(__('Purchase Print Setting')); ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-pos-tab" data-bs-toggle="pill" href="#pills-pos" role="tab" aria-controls="pills-pos" aria-selected="false"><?php echo e(__('POS Print Setting')); ?></a>
-                    </li>
-                </ul>
+                
 
                 <div class="tab-content" id="pills-tabContent">
 
                     <!--Purchase Setting-->
-                    <div class="tab-pane fade  show active" id="pills-purchase" role="tabpanel" aria-labelledby="pills-purchase-tab">
-
-                        <div class="bg-none">
-                            <div class="row company-setting">
-                                <div class="col-md-3">
-                                    <div class="card-body">
-                                        <h5></h5>
-                                        <form id="setting-form" method="post" action="<?php echo e(route('purchase.template.setting')); ?>" enctype="multipart/form-data">
-                                            <?php echo csrf_field(); ?>
-                                            <div class="form-group">
-                                                <label for="address" class="form-label"><?php echo e(__('Purchase Template')); ?></label>
-                                                <select class="form-control" name="purchase_template">
-                                                    <?php $__currentLoopData = App\Models\Utility::templateData()['templates']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $template): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <option value="<?php echo e($key); ?>" <?php echo e((isset($settings['purchase_template']) && $settings['purchase_template'] == $key) ? 'selected' : ''); ?>><?php echo e($template); ?></option>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-form-label"><?php echo e(__('Color Input')); ?></label>
-                                                <div class="row gutters-xs">
-                                                    <?php $__currentLoopData = Utility::templateData()['colors']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <div class="col-auto">
-                                                            <label class="colorinput">
-                                                                <input name="purchase_color" type="radio" value="<?php echo e($color); ?>" class="colorinput-input" <?php echo e((isset($settings['purchase_color']) && $settings['purchase_color'] == $color) ? 'checked' : ''); ?>>
-                                                                <span class="colorinput-color" style="background: #<?php echo e($color); ?>"></span>
-                                                            </label>
-                                                        </div>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-form-label"><?php echo e(__('Purchase Logo')); ?></label>
-                                                <div class="choose-files mt-2 ">
-                                                    <label for="purchase_logo">
-                                                        <div class=" bg-primary purchase_logo_update"> <i class="ti ti-upload px-1"></i><?php echo e(__('Choose file here')); ?></div>
-                                                        <input type="file" class="form-control file" name="purchase_logo" id="purchase_logo" data-filename="purchase_logo_update">
-                                                        <img id="purchase_image" class="mt-2" style="width:25%;"/>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group mt-2 text-end">
-                                                <input type="submit" value="<?php echo e(__('Save')); ?>" class="btn btn-print-invoice  btn-primary m-r-10">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <?php if(isset($settings['purchase_template']) && isset($settings['purchase_color'])): ?>
-                                        <iframe id="purchase_frame" class="w-100 h-100" frameborder="0" src="<?php echo e(route('purchase.preview',[$settings['purchase_template'],$settings['purchase_color']])); ?>"></iframe>
-                                    <?php else: ?>
-                                        <iframe id="purchase_frame" class="w-100 h-100" frameborder="0" src="<?php echo e(route('purchase.preview',['template1','fffff'])); ?>"></iframe>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
+                    
 
                     <!--POS Setting-->
-                    <div class="tab-pane fade" id="pills-pos" role="tabpanel" aria-labelledby="pills-pos-tab">
+                    <div class="tab-pane fade show active" id="pills-pos" role="tabpanel" aria-labelledby="pills-pos-tab">
                         <div class="bg-none">
                             <div class="row company-setting">
                                 <div class="col-md-3">
