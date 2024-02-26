@@ -38,16 +38,17 @@
                         </span>
                     </a>
                     <ul class="dash-submenu">
-                        @can('manage pos')
-                        <li class="dash-item {{ Request::route()->getName() == 'purchase-print-setting' ? ' active' : '' }}">
-                            <a class="dash-link" href="{{ route('purchase.print.setting') }}">{{ __('Print') }}</a>
-                        </li>
-                        @endcan
+                        
                         @if (Gate::check('manage vender'))
                             <li class="dash-item">
                                 <a class="dash-link" href="{{ route('vender.index') }}">{{ __('Suppiler') }}</a>
                             </li>
                         @endif
+                        @can('manage pos')
+                        <li class="dash-item {{ Request::route()->getName() == 'purchase-print-setting' ? ' active' : '' }}">
+                            <a class="dash-link" href="{{ route('purchase.print.setting') }}">{{ __('Print') }}</a>
+                        </li>
+                        @endcan
                     </ul>
                 </li>
             </ul>

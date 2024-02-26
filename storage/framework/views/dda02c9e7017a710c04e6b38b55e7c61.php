@@ -339,92 +339,92 @@
                     <div class="card sticky-top" style="top:30px">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             <a href="#brand-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Brand Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Brand')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#system-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('System Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Initialization')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#company-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Company Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Company')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#email-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Email Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Email')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#tracker-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Time Tracker Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Time Tracker')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#payment-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Payment Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Payment')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#zoom-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Zoom Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Zoom')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#slack-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Slack Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Slack')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#telegram-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Telegram Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Telegram')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#twilio-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Twilio Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Twilio')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#email-notification-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Email Notification Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Email Notification')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#offer-letter-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Offer Letter Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Offer Letter')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#joining-letter-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Joining Letter Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Joining Letter')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#experience-certificate-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Experience Certificate Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Experience Certificate')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#noc-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('NOC Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('NOC')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#google-calender"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Google Calendar Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Google Calendar')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#webhook-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Webhook Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('Webhook')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#ip-restriction-settings"
-                                class="list-group-item list-group-item-action border-0"><?php echo e(__('IP Restriction Settings')); ?>
+                                class="list-group-item list-group-item-action border-0"><?php echo e(__('IP Restriction')); ?>
 
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
@@ -439,7 +439,7 @@
                         <?php echo e(Form::model($setting, ['route' => 'business.setting', 'method' => 'POST', 'enctype' => 'multipart/form-data'])); ?>
 
                         <div class="card-header">
-                            <h5><?php echo e(__('Brand Settings')); ?></h5>
+                            <h5><?php echo e(__('Brand')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your brand details')); ?></small>
                         </div>
                         <div class="card-body">
@@ -752,7 +752,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--System Settings-->
                     <div id="system-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('System Settings')); ?></h5>
+                            <h5><?php echo e(__('Initialization')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your system details')); ?></small>
                         </div>
                         <?php echo e(Form::model($setting, ['route' => 'system.settings', 'method' => 'post'])); ?>
@@ -1090,7 +1090,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Company Settings-->
                     <div id="company-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Company Settings')); ?></h5>
+                            <h5><?php echo e(__('Company')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your company details')); ?></small>
                         </div>
                         <?php echo e(Form::model($setting, ['route' => 'company.settings', 'method' => 'post'])); ?>
@@ -1358,7 +1358,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Email Settings-->
                     <div id="email-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Email Settings')); ?></h5>
+                            <h5><?php echo e(__('Email')); ?></h5>
                         </div>
                         <?php echo e(Form::model($setting, ['route' => 'company.email.settings', 'method' => 'post'])); ?>
 
@@ -1557,7 +1557,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Time-Tracker Settings-->
                     <div id="tracker-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Time Tracker Settings')); ?></h5>
+                            <h5><?php echo e(__('Time Tracker')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your Time Tracker settings')); ?></small>
                         </div>
                         <?php echo e(Form::model($setting, ['route' => 'tracker.settings', 'method' => 'post'])); ?>
@@ -1591,7 +1591,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Payment Settings-->
                     <div class="card" id="payment-settings">
                         <div class="card-header">
-                            <h5><?php echo e('Payment Settings'); ?></h5>
+                            <h5><?php echo e('Payment'); ?></h5>
                             <small
                                 class="text-secondary font-weight-bold"><?php echo e(__('These details will be used to collect invoice payments. Each invoice will have a payment button based on the below configuration.')); ?></small>
                         </div>
@@ -3462,7 +3462,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Zoom - Metting Settings-->
                     <div id="zoom-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Zoom Settings')); ?></h5>
+                            <h5><?php echo e(__('Zoom')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your Zoom settings')); ?></small>
                         </div>
                         <?php echo e(Form::model($setting, ['route' => 'zoom.settings', 'method' => 'post'])); ?>
@@ -3499,7 +3499,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Slack Settings-->
                     <div id="slack-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Slack Settings')); ?></h5>
+                            <h5><?php echo e(__('Slack')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your Slack settings')); ?></small>
                         </div>
                         <?php echo e(Form::open(['route' => 'slack.settings', 'id' => 'slack-setting', 'method' => 'post', 'class' => 'd-contents'])); ?>
@@ -3758,7 +3758,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Telegram Settings-->
                     <div id="telegram-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Telegram Settings')); ?></h5>
+                            <h5><?php echo e(__('Telegram')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your Telegram settings')); ?></small>
                         </div>
                         <?php echo e(Form::open(['route' => 'telegram.settings', 'id' => 'telegram-setting', 'method' => 'post', 'class' => 'd-contents'])); ?>
@@ -4048,7 +4048,7 @@ unset($__errorArgs, $__bag); ?>
                     <!--Twilio Settings-->
                     <div id="twilio-settings" class="card">
                         <div class="card-header">
-                            <h5><?php echo e(__('Twilio Settings')); ?></h5>
+                            <h5><?php echo e(__('Twilio')); ?></h5>
                             <small class="text-muted"><?php echo e(__('Edit your Twilio settings')); ?></small>
                         </div>
                         <?php echo e(Form::model($setting, ['route' => 'twilio.setting', 'method' => 'post'])); ?>
@@ -4226,7 +4226,7 @@ unset($__errorArgs, $__bag); ?>
                     <div id="email-notification-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header">
-                                <h5><?php echo e(__('Email Notification Settings')); ?></h5>
+                                <h5><?php echo e(__('Email Notification')); ?></h5>
                                 <small class="text-muted"><?php echo e(__('Edit email notification settings')); ?></small>
                             </div>
                             <?php echo e(Form::model($setting, ['route' => ['status.email.language'], 'method' => 'post'])); ?>
@@ -4279,7 +4279,7 @@ unset($__errorArgs, $__bag); ?>
                     <div id="offer-letter-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5><?php echo e(__('Offer Letter Settings')); ?></h5>
+                                <h5><?php echo e(__('Offer Letter')); ?></h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -4367,7 +4367,7 @@ unset($__errorArgs, $__bag); ?>
                     <div id="joining-letter-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5><?php echo e(__('Joining Letter Settings')); ?></h5>
+                                <h5><?php echo e(__('Joining Letter')); ?></h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -4447,7 +4447,7 @@ unset($__errorArgs, $__bag); ?>
                     <div id="experience-certificate-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5><?php echo e(__('Experience Certificate Settings')); ?></h5>
+                                <h5><?php echo e(__('Experience Certificate')); ?></h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -4525,7 +4525,7 @@ unset($__errorArgs, $__bag); ?>
                     <div id="noc-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5><?php echo e(__('NOC Settings')); ?></h5>
+                                <h5><?php echo e(__('NOC')); ?></h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -4597,7 +4597,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h5 class="mb-2"><?php echo e(__('Google Calendar Settings')); ?></h5>
+                                        <h5 class="mb-2"><?php echo e(__('Google Calendar')); ?></h5>
                                     </div>
                                     <div class="col switch-width text-end">
                                         <div class="form-group mb-0">
@@ -4647,7 +4647,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h5 class="mb-2"><?php echo e(__('Webhook Settings')); ?></h5>
+                                        <h5 class="mb-2"><?php echo e(__('Webhook')); ?></h5>
                                     </div>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create webhook')): ?>
                                         <div class="col-6 text-end">
@@ -4731,7 +4731,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h5 class="mb-2"><?php echo e(__('IP Restriction Settings')); ?></h5>
+                                        <h5 class="mb-2"><?php echo e(__('IP Restriction')); ?></h5>
                                     </div>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create webhook')): ?>
                                         <div class="col-6 text-end">

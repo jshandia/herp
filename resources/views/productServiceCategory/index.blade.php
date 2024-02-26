@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="col-3">
-            @include('layouts.account_setup')
+            @include('layouts.logistic_setup')
         </div>
         <div class="col-9">
             <div class="card">

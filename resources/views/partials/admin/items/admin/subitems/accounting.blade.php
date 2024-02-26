@@ -1,6 +1,6 @@
 @if (!empty($userPlan) &&  $userPlan->account == 1 && Gate::check('show account dashboard'))
 @if (Gate::check('manage customer') || Gate::check('manage vender') || Gate::check('manage customer') || Gate::check('manage vender') || Gate::check('manage proposal') || Gate::check('manage bank account') || Gate::check('manage bank transfer') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note') || Gate::check('manage bill') || Gate::check('manage payment') || Gate::check('manage debit note') || Gate::check('manage chart of account') || Gate::check('manage journal entry') || Gate::check('balance sheet report') || Gate::check('ledger report') || Gate::check('trial balance report'))
-<li class="dash-item dash-hasmenu {{ Request::route()->getName() == 'print-setting' || Request::segment(1) == 'bank-account' || Request::segment(1) == 'bank-transfer' || Request::segment(1) == 'taxes' || Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' || (Request::segment(1) == 'transaction' &&     Request::segment(2) != 'ledger' &&     Request::segment(2) != 'balance-sheet' &&     Request::segment(2) != 'trial-balance') || Request::segment(1) == 'goal' || Request::segment(1) == 'budget' || Request::segment(1) == 'chart-of-account' || Request::segment(1) == 'journal-entry' || Request::segment(2) == 'ledger' || Request::segment(2) == 'balance-sheet' || Request::segment(2) == 'trial-balance' || Request::segment(2) == 'profit-loss' ? ' active dash-trigger' : '' }}">
+<li class="dash-item dash-hasmenu {{ Request::route()->getName() == 'print-setting' || Request::segment(1) == 'bank-account' || Request::segment(1) == 'bank-transfer' || Request::segment(1) == 'taxes' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' || (Request::segment(1) == 'transaction' &&     Request::segment(2) != 'ledger' &&     Request::segment(2) != 'balance-sheet' &&     Request::segment(2) != 'trial-balance') || Request::segment(1) == 'goal' || Request::segment(1) == 'budget' || Request::segment(1) == 'chart-of-account' || Request::segment(1) == 'journal-entry' || Request::segment(2) == 'ledger' || Request::segment(2) == 'balance-sheet' || Request::segment(2) == 'trial-balance' || Request::segment(2) == 'profit-loss' ? ' active dash-trigger' : '' }}">
     <a href="#!" class="dash-link">
         <span class="dash-micon">
             <i class="ti ti-box"></i>
@@ -37,7 +37,7 @@
         </li>
         @endif
         @if (Gate::check('income report') || Gate::check('expense report') || Gate::check('income vs expense report') || Gate::check('tax report') || Gate::check('loss & profit report') || Gate::check('invoice report') || Gate::check('bill report') || Gate::check('stock report') || Gate::check('invoice report') || Gate::check('manage transaction') || Gate::check('statement report') || Gate::check('manage chart of account') || Gate::check('manage journal entry') || Gate::check('balance sheet report') || Gate::check('ledger report') || Gate::check('trial balance report'))
-        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'report' || Request::segment(1) == 'chart-of-account' || Request::segment(1) == 'reports-monthly-cashflow' || Request::segment(1) == 'reports-quarterly-cashflow' || Request::segment(2) == 'profit-loss' || Request::segment(2) == 'ledger' || Request::segment(2) == 'balance-sheet' || Request::segment(2) == 'trial-balance' ? 'active dash-trigger ' : '' }}">
+        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'report' || Request::segment(1) == 'reports-monthly-cashflow' || Request::segment(1) == 'reports-quarterly-cashflow' || Request::segment(2) == 'profit-loss' || Request::segment(2) == 'ledger' || Request::segment(2) == 'balance-sheet' || Request::segment(2) == 'trial-balance' ? 'active dash-trigger ' : '' }}">
             <a class="dash-link" href="#">{{ __('Reports') }}
                 <span class="dash-arrow">
                     <i data-feather="chevron-right"></i>
@@ -67,9 +67,7 @@
                     </ul>
                 </li>
                 @endif
-                <li class="dash-item {{ Request::route()->getName() == 'chart-of-account.index' || Request::route()->getName() == 'chart-of-account.show' ? ' active' : '' }}">
-                    <a class="dash-link" href="{{ route('chart-of-account.index') }}">{{ __('Chart of Accounts') }}</a>
-                </li>
+                
                 @can('statement report')
                 <li class="dash-item {{ Request::route()->getName() == 'report.account.statement' ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('report.account.statement') }}">{{ __('Account Statement') }}</a>
@@ -120,17 +118,21 @@
         </li>
         @endif
         @if (Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer'))
-        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'bank-account' || Request::segment(1) == 'bank-transfer' || Request::segment(1) == 'taxes' || Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' || Request::route()->getName() == 'print-setting'  ? 'active dash-trigger' : '' }}">
+        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'bank-account'  || Request::segment(1) == 'chart-of-account' || Request::segment(1) == 'bank-transfer' || Request::segment(1) == 'taxes' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' || Request::route()->getName() == 'print-setting'  ? 'active dash-trigger' : '' }}">
             <a class="dash-link" href="#">{{ __('Settings') }}
                 <span class="dash-arrow">
                     <i data-feather="chevron-right"></i>
                 </span>
             </a>
-            <ul class="dash-submenu">
+            <ul class="dash-submenu"><li class="dash-item">
+                    <li class="dash-item {{ Request::route()->getName() == 'chart-of-account.index' || Request::route()->getName() == 'chart-of-account.show' ? ' active' : '' }}">
+                        <a class="dash-link" href="{{ route('chart-of-account.index') }}">{{ __('Chart of Accounts') }}</a>
+                    </li>
+                </li>
                 <li class="dash-item {{ Request::route()->getName() == 'bank-account.index' || Request::route()->getName() == 'bank-account.create' || Request::route()->getName() == 'bank-account.edit' ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('bank-account.index') }}">{{ __('Bank') }}</a>
                 </li>
-                <li class="dash-item {{ Request::segment(1) == 'taxes' || Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' ? 'active dash-trigger' : '' }}">
+                <li class="dash-item {{ Request::segment(1) == 'taxes' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' ? 'active dash-trigger' : '' }}">
                     <a class="dash-link" href="{{ route('taxes.index') }}">{{ __('Field') }}</a>
                 </li>
             </ul>

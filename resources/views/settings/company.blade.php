@@ -339,75 +339,75 @@
                     <div class="card sticky-top" style="top:30px">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             <a href="#brand-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Brand Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Brand') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#system-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('System Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Initialization') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#company-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Company Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Company') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#email-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Email Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Email') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#tracker-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Time Tracker Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Time Tracker') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#payment-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Payment Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Payment') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#zoom-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Zoom Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Zoom') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#slack-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Slack Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Slack') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#telegram-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Telegram Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Telegram') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#twilio-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Twilio Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Twilio') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#email-notification-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Email Notification Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Email Notification') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#offer-letter-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Offer Letter Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Offer Letter') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#joining-letter-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Joining Letter Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Joining Letter') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#experience-certificate-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Experience Certificate Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Experience Certificate') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#noc-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('NOC Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('NOC') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#google-calender"
-                                class="list-group-item list-group-item-action border-0">{{ __('Google Calendar Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Google Calendar') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#webhook-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('Webhook Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('Webhook') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                             <a href="#ip-restriction-settings"
-                                class="list-group-item list-group-item-action border-0">{{ __('IP Restriction Settings') }}
+                                class="list-group-item list-group-item-action border-0">{{ __('IP Restriction') }}
                                 <div class="float-end"><i class="ti ti-chevron-right"></i></div>
                             </a>
                         </div>
@@ -420,7 +420,7 @@
                     <div id="brand-settings" class="card">
                         {{ Form::model($setting, ['route' => 'business.setting', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
                         <div class="card-header">
-                            <h5>{{ __('Brand Settings') }}</h5>
+                            <h5>{{ __('Brand') }}</h5>
                             <small class="text-muted">{{ __('Edit your brand details') }}</small>
                         </div>
                         <div class="card-body">
@@ -679,7 +679,7 @@
                     <!--System Settings-->
                     <div id="system-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('System Settings') }}</h5>
+                            <h5>{{ __('Initialization') }}</h5>
                             <small class="text-muted">{{ __('Edit your system details') }}</small>
                         </div>
                         {{ Form::model($setting, ['route' => 'system.settings', 'method' => 'post']) }}
@@ -887,7 +887,7 @@
                     <!--Company Settings-->
                     <div id="company-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Company Settings') }}</h5>
+                            <h5>{{ __('Company') }}</h5>
                             <small class="text-muted">{{ __('Edit your company details') }}</small>
                         </div>
                         {{ Form::model($setting, ['route' => 'company.settings', 'method' => 'post']) }}
@@ -1060,7 +1060,7 @@
                     <!--Email Settings-->
                     <div id="email-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Email Settings') }}</h5>
+                            <h5>{{ __('Email') }}</h5>
                         </div>
                         {{ Form::model($setting, ['route' => 'company.email.settings', 'method' => 'post']) }}
                         <div class="card-body">
@@ -1184,7 +1184,7 @@
                     <!--Time-Tracker Settings-->
                     <div id="tracker-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Time Tracker Settings') }}</h5>
+                            <h5>{{ __('Time Tracker') }}</h5>
                             <small class="text-muted">{{ __('Edit your Time Tracker settings') }}</small>
                         </div>
                         {{ Form::model($setting, ['route' => 'tracker.settings', 'method' => 'post']) }}
@@ -1214,7 +1214,7 @@
                     <!--Payment Settings-->
                     <div class="card" id="payment-settings">
                         <div class="card-header">
-                            <h5>{{ 'Payment Settings' }}</h5>
+                            <h5>{{ 'Payment' }}</h5>
                             <small
                                 class="text-secondary font-weight-bold">{{ __('These details will be used to collect invoice payments. Each invoice will have a payment button based on the below configuration.') }}</small>
                         </div>
@@ -2972,7 +2972,7 @@
                     <!--Zoom - Metting Settings-->
                     <div id="zoom-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Zoom Settings') }}</h5>
+                            <h5>{{ __('Zoom') }}</h5>
                             <small class="text-muted">{{ __('Edit your Zoom settings') }}</small>
                         </div>
                         {{ Form::model($setting, ['route' => 'zoom.settings', 'method' => 'post']) }}
@@ -3004,7 +3004,7 @@
                     <!--Slack Settings-->
                     <div id="slack-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Slack Settings') }}</h5>
+                            <h5>{{ __('Slack') }}</h5>
                             <small class="text-muted">{{ __('Edit your Slack settings') }}</small>
                         </div>
                         {{ Form::open(['route' => 'slack.settings', 'id' => 'slack-setting', 'method' => 'post', 'class' => 'd-contents']) }}
@@ -3239,7 +3239,7 @@
                     <!--Telegram Settings-->
                     <div id="telegram-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Telegram Settings') }}</h5>
+                            <h5>{{ __('Telegram') }}</h5>
                             <small class="text-muted">{{ __('Edit your Telegram settings') }}</small>
                         </div>
                         {{ Form::open(['route' => 'telegram.settings', 'id' => 'telegram-setting', 'method' => 'post', 'class' => 'd-contents']) }}
@@ -3504,7 +3504,7 @@
                     <!--Twilio Settings-->
                     <div id="twilio-settings" class="card">
                         <div class="card-header">
-                            <h5>{{ __('Twilio Settings') }}</h5>
+                            <h5>{{ __('Twilio') }}</h5>
                             <small class="text-muted">{{ __('Edit your Twilio settings') }}</small>
                         </div>
                         {{ Form::model($setting, ['route' => 'twilio.setting', 'method' => 'post']) }}
@@ -3645,7 +3645,7 @@
                     <div id="email-notification-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header">
-                                <h5>{{ __('Email Notification Settings') }}</h5>
+                                <h5>{{ __('Email Notification') }}</h5>
                                 <small class="text-muted">{{ __('Edit email notification settings') }}</small>
                             </div>
                             {{ Form::model($setting, ['route' => ['status.email.language'], 'method' => 'post']) }}
@@ -3696,7 +3696,7 @@
                     <div id="offer-letter-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5>{{ __('Offer Letter Settings') }}</h5>
+                                <h5>{{ __('Offer Letter') }}</h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -3779,7 +3779,7 @@
                     <div id="joining-letter-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5>{{ __('Joining Letter Settings') }}</h5>
+                                <h5>{{ __('Joining Letter') }}</h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -3855,7 +3855,7 @@
                     <div id="experience-certificate-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5>{{ __('Experience Certificate Settings') }}</h5>
+                                <h5>{{ __('Experience Certificate') }}</h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -3929,7 +3929,7 @@
                     <div id="noc-settings" class="card">
                         <div class="col-md-12">
                             <div class="card-header d-flex justify-content-between">
-                                <h5>{{ __('NOC Settings') }}</h5>
+                                <h5>{{ __('NOC') }}</h5>
                                 <div class="d-flex justify-content-end drp-languages">
                                     <ul class="list-unstyled mb-0 m-2">
                                         <li class="dropdown dash-h-item drp-language" style="margin-top: -7px;">
@@ -3996,7 +3996,7 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h5 class="mb-2">{{ __('Google Calendar Settings') }}</h5>
+                                        <h5 class="mb-2">{{ __('Google Calendar') }}</h5>
                                     </div>
                                     <div class="col switch-width text-end">
                                         <div class="form-group mb-0">
@@ -4041,7 +4041,7 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h5 class="mb-2">{{ __('Webhook Settings') }}</h5>
+                                        <h5 class="mb-2">{{ __('Webhook') }}</h5>
                                     </div>
                                     @can('create webhook')
                                         <div class="col-6 text-end">
@@ -4123,7 +4123,7 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h5 class="mb-2">{{ __('IP Restriction Settings') }}</h5>
+                                        <h5 class="mb-2">{{ __('IP Restriction') }}</h5>
                                     </div>
                                     @can('create webhook')
                                         <div class="col-6 text-end">
