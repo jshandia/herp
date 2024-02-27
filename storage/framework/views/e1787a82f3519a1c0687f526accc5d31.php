@@ -36,13 +36,23 @@
           <a class="dash-link" href="<?php echo e(route('report.invoice.summary')); ?>"><?php echo e(__('Invoice Summary')); ?></a>
         </li>
         <?php endif; ?>
-        <?php if(Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer')): ?>
+      </ul>
+    </li>
+    <?php if(Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer')): ?>
+    <li class="dash-item dash-hasmenu">
+      <a class="dash-link" href="#"><?php echo e(__('Settings')); ?>
+
+        <span class="dash-arrow">
+          <i data-feather="chevron-right"></i>
+        </span>
+      </a>
+      <ul class="dash-submenu">
         <li class="dash-item <?php echo e(Request::route()->getName() == 'receivable-print-setting' ? ' active' : ''); ?>">
           <a class="dash-link" href="<?php echo e(route('receivable.print.setting')); ?>"><?php echo e(__('Print')); ?></a>
         </li>
-        <?php endif; ?>
       </ul>
     </li>
+    <?php endif; ?>
     <?php endif; ?>
   </ul>
 </li>

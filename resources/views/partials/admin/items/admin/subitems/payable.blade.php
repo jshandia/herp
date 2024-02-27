@@ -46,13 +46,21 @@
                 <a class="dash-link" href="{{ route('report.bill.summary') }}">{{ __('Bill Summary') }}</a>
               </li>
               @endcan
+            </ul>
+          </li>
+          <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'payable-print-setting' ? 'active dash-trigger ' : '' }}">
+            <a class="dash-link" href="#">{{ __('Settings') }}
+              <span class="dash-arrow">
+                <i data-feather="chevron-right"></i>
+              </span>
+            </a>
+            <ul class="dash-submenu">
               @if(Gate::check('manage constant tax') || Gate::check('manage constant category') || Gate::check('manage constant unit') || Gate::check('manage constant payment method') || Gate::check('manage constant custom field') || Gate::check('manage print settings') || Gate::check('manage bank account') || Gate::check('manage bank transfer'))
               <li class="dash-item {{ Request::route()->getName() == 'payable-print-setting' ? ' active' : '' }}">
                 <a class="dash-link" href="{{ route('payable.print.setting') }}">{{ __('Print') }}</a>
               </li>
               @endif
             </ul>
-            
           </li>
           @endif
       </ul>
