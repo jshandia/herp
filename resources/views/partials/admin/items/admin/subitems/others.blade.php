@@ -1,3 +1,4 @@
+@if (\Auth::user()->type != 'super admin')
 <li class="dash-item dash-hasmenu">
     <a href="#!" class="dash-link ">
         <span class="dash-micon">
@@ -9,7 +10,6 @@
         </span>
     </a>
     <ul class="dash-submenu">
-        @if (\Auth::user()->type != 'super admin')
         <li class="dash-item">
             <a href="{{ route('support.index') }}" class="dash-link">
                 <span class="dash-mtext">{{ __('Support') }}</span>
@@ -25,6 +25,6 @@
                 <span class="dash-mtext">{{ __('Messenger') }}</span>
             </a>
         </li>
-        @endif
     </ul>
 </li>
+@endif

@@ -25,7 +25,7 @@
 
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 <head>
-    <title>{{($setting['title_text']) ? $setting['title_text'] : config('app.name', 'ERPGO')}} - @yield('page-title')</title>
+    <title>{{($setting['title_text']) ? $setting['title_text'] : config('HERP', 'HERP')}} - @yield('page-title')</title>
 
     <meta name="title" content="{{$metatitle}}">
     <meta name="description" content="{{$metsdesc}}">

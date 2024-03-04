@@ -25,7 +25,7 @@
 
 <meta name="csrf-token" id="csrf-token" content="<?php echo e(csrf_token()); ?>">
 <head>
-    <title><?php echo e(($setting['title_text']) ? $setting['title_text'] : config('app.name', 'ERPGO')); ?> - <?php echo $__env->yieldContent('page-title'); ?></title>
+    <title><?php echo e(($setting['title_text']) ? $setting['title_text'] : config('HERP', 'HERP')); ?> - <?php echo $__env->yieldContent('page-title'); ?></title>
 
     <meta name="title" content="<?php echo e($metatitle); ?>">
     <meta name="description" content="<?php echo e($metsdesc); ?>">

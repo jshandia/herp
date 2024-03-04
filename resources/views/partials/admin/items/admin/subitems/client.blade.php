@@ -1,3 +1,4 @@
+@if(!empty($userPlan) &&  $userPlan->crm == 1 && $userPlan->project == 1)
 <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'crm-dashboard' || Request::segment(1) == 'leads' || Request::segment(1) == 'deals' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'contract' || Request::segment(1) == 'contract' || Request::segment(1) == 'reports-lead' || Request::segment(1) == 'reports-deal' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'project' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? ' active dash-trigger' : '' }}">
   <a href="#!" class="dash-link ">
     <span class="dash-micon">
@@ -163,3 +164,4 @@
     @endif
   </ul>
 </li>
+@endif

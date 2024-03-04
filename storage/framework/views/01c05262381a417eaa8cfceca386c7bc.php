@@ -8,7 +8,7 @@
     <div class="footer-wrapper">
         <div class="py-1">
             <p class="mb-0 text-muted"> &copy;
-                <?php echo e(date('Y')); ?> <?php echo e($setting['footer_text'] ? $setting['footer_text'] : config('app.name', 'ERPGo')); ?>
+                <?php echo e(date('Y')); ?> <?php echo e($setting['footer_text'] ? $setting['footer_text'] : config('app.name', 'HSystem')); ?>
 
             </p>
         </div>

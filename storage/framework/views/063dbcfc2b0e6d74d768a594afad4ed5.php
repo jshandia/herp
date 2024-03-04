@@ -1,3 +1,4 @@
+<?php if(\Auth::user()->type != 'super admin'): ?>
 <li class="dash-item dash-hasmenu">
     <a href="#!" class="dash-link ">
         <span class="dash-micon">
@@ -9,7 +10,6 @@
         </span>
     </a>
     <ul class="dash-submenu">
-        <?php if(\Auth::user()->type != 'super admin'): ?>
         <li class="dash-item">
             <a href="<?php echo e(route('support.index')); ?>" class="dash-link">
                 <span class="dash-mtext"><?php echo e(__('Support')); ?></span>
@@ -25,6 +25,6 @@
                 <span class="dash-mtext"><?php echo e(__('Messenger')); ?></span>
             </a>
         </li>
-        <?php endif; ?>
     </ul>
-</li><?php /**PATH C:\xampp\htdocs\herp\resources\views/partials/admin/items/admin/subitems/others.blade.php ENDPATH**/ ?>
+</li>
+<?php endif; ?><?php /**PATH C:\xampp\htdocs\herp\resources\views/partials/admin/items/admin/subitems/others.blade.php ENDPATH**/ ?>
