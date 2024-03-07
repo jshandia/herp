@@ -67,7 +67,12 @@ class DashboardController extends Controller
      */
     public function blank_page_index(){
         if(Auth::check()){
-            return view('blank.blank');
+            if(Auth::user()->type == 'super admin' || Auth::user()->type == 'client'){
+                return redirect()->route('client.dashboard.view');
+            }else{
+                return view('blank.blank');
+            }
+            
         }else{
             return $this->account_dashboard_index();
         }

@@ -35,179 +35,19 @@
     </div>
     <div class="navbar-content">
         <?php if(\Auth::user()->type != 'client'): ?>
-            <ul class="dash-navbar">
-                <?php echo $__env->make('partials.admin.items.admin.subitemslist', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <ul class="dash-navbar">
+            <?php echo $__env->make('partials.admin.items.admin.subitemslist', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </ul>
         <?php endif; ?>
         <?php if(\Auth::user()->type == 'client'): ?>
-            <ul class="dash-navbar">
-                <?php if(Gate::check('manage client dashboard')): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'dashboard' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('client.dashboard.view')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-home"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Dashboard')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(Gate::check('manage deal')): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'deals' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('deals.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-rocket"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Deals')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(Gate::check('manage contract')): ?>
-                    <li
-                        class="dash-item dash-hasmenu <?php echo e(Request::route()->getName() == 'contract.index' || Request::route()->getName() == 'contract.show' ? 'active' : ''); ?>">
-                        <a href="<?php echo e(route('contract.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-rocket"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Contract')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(Gate::check('manage project')): ?>
-                    <li class="dash-item dash-hasmenu  <?php echo e(Request::segment(1) == 'projects' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('projects.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-share"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Project')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(Gate::check('manage project')): ?>
-                    <li
-                        class="dash-item  <?php echo e(Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : ''); ?>">
-                        <a class="dash-link" href="<?php echo e(route('project_report.index')); ?>">
-                            <span class="dash-micon"><i class="ti ti-chart-line"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Project Report')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-                <?php if(Gate::check('manage project task')): ?>
-                    <li class="dash-item dash-hasmenu  <?php echo e(Request::segment(1) == 'taskboard' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('taskBoard.view', 'list')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-list-check"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Tasks')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-                <?php if(Gate::check('manage bug report')): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'bugs-report' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('bugs.view', 'list')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-bug"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Bugs')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-                <?php if(Gate::check('manage timesheet')): ?>
-                    <li
-                        class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'timesheet-list' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('timesheet.list')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-clock"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Timesheet')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-                <?php if(Gate::check('manage project task')): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'calendar' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('task.calendar', ['all'])); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-calendar"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Task Calender')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-                <li class="dash-item dash-hasmenu">
-                    <a href="<?php echo e(route('support.index')); ?>"
-                        class="dash-link <?php echo e(Request::segment(1) == 'support' ? 'active' : ''); ?>">
-                        <span class="dash-micon"><i class="ti ti-headphones"></i></span><span
-                            class="dash-mtext"><?php echo e(__('Support')); ?></span>
-                    </a>
-                </li>
-            </ul>
+        <ul class="dash-navbar">
+            <?php echo $__env->make('partials.admin.items.client.subitemslist', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        </ul>
         <?php endif; ?>
         <?php if(\Auth::user()->type == 'super admin'): ?>
-            <ul class="dash-navbar">
-                <?php if(Gate::check('manage super admin dashboard')): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'dashboard' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('client.dashboard.view')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-home"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Dashboard')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage user')): ?>
-                    <li
-                        class="dash-item dash-hasmenu <?php echo e(Request::route()->getName() == 'users.index' || Request::route()->getName() == 'users.create' || Request::route()->getName() == 'users.edit' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('users.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-users"></i></span><span
-                                class="dash-mtext"><?php echo e(__('User')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-                <?php if(Gate::check('manage plan')): ?>
-                    <li class="dash-item dash-hasmenu  <?php echo e(Request::segment(1) == 'plans' ? 'active' : ''); ?>">
-                        <a href="<?php echo e(route('plans.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-trophy"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Plan')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(\Auth::user()->type == 'super admin'): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(request()->is('plan_request*') ? 'active' : ''); ?>">
-                        <a href="<?php echo e(route('plan_request.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-arrow-up-right-circle"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Plan Request')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(Gate::check('manage coupon')): ?>
-                    <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'coupons' ? 'active' : ''); ?>">
-                        <a href="<?php echo e(route('coupons.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-gift"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Coupon')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if(Gate::check('manage order')): ?>
-                    <li class="dash-item dash-hasmenu  <?php echo e(Request::segment(1) == 'orders' ? 'active' : ''); ?>">
-                        <a href="<?php echo e(route('order.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-shopping-cart-plus"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Order')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <li
-                    class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'email_template' || Request::route()->getName() == 'manage.email.language' ? ' active dash-trigger' : 'collapsed'); ?>">
-                    <a href="<?php echo e(route('manage.email.language', [$emailTemplate->id, \Auth::user()->lang])); ?>"
-                        class="dash-link">
-                        <span class="dash-micon"><i class="ti ti-template"></i></span>
-                        <span class="dash-mtext"><?php echo e(__('Email Template')); ?></span>
-                    </a>
-                </li>
-
-                <?php if(\Auth::user()->type == 'super admin'): ?>
-                    <?php echo $__env->make('landingpage::menu.landingpage', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                <?php endif; ?>
-
-                <?php if(Gate::check('manage system settings')): ?>
-                    <li
-                        class="dash-item dash-hasmenu <?php echo e(Request::route()->getName() == 'systems.index' ? ' active' : ''); ?>">
-                        <a href="<?php echo e(route('systems.index')); ?>" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-settings"></i></span><span
-                                class="dash-mtext"><?php echo e(__('Settings')); ?></span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-
-            </ul>
+        <ul class="dash-navbar">
+            <?php echo $__env->make('partials.admin.items.superadmin.subitemslist', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        </ul>
         <?php endif; ?>
 
 
