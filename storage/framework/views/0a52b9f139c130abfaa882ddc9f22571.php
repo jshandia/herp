@@ -198,8 +198,24 @@
                 </div>
             </div>
         </div>
-        
-
+        <div class="container">
+            <div class="row g-0 gy-0 mt-4 align-items-center">
+                <div class="col-xxl-12">
+                    <p class="mb-0"><?php echo e(__('Trusted by')); ?> <b class="fw-bold"><?php echo e($settings['home_trusted_by']); ?></b></p>
+                </div>
+            </div>
+            <div class="row g-0 gy-0 mt-4 align-items-center">
+                <div class="col-xxl-12">
+                    <div class="row gy-3 row-cols-9">
+                        <?php $__currentLoopData = explode(',', $settings['home_logo']); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $home_logo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-auto">
+                            <img src="<?php echo e($logo.'/'. $home_logo); ?>" alt="" class="img-fluid" style="width: 130px;">
+                        </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 <?php endif; ?>
 <!-- [ Banner ] start -->

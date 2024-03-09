@@ -193,46 +193,24 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="container">
-                <div class="row g-0 gy-2 mt-4 align-items-center">
-                    <div class="col-xxl-3">
-                        <p class="mb-0">{{__('Trusted by')}} <b class="fw-bold">{{ $settings['home_trusted_by'] }}</b></p>
-                    </div>
-                    <div class="col-xxl-9">
-                        <div class="row gy-3 row-cols-9">
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
-                            <div class="col-auto">
-                                <img src="{{ $logo.'/'. $settings['home_logo'] }}" alt="" class="img-fluid"
-                                    style="width: 130px;">
-                            </div>
+        <div class="container">
+            <div class="row g-0 gy-0 mt-4 align-items-center">
+                <div class="col-xxl-12">
+                    <p class="mb-0">{{__('Trusted by')}} <b class="fw-bold">{{ $settings['home_trusted_by'] }}</b></p>
+                </div>
+            </div>
+            <div class="row g-0 gy-0 mt-4 align-items-center">
+                <div class="col-xxl-12">
+                    <div class="row gy-3 row-cols-9">
+                        @foreach (explode(',', $settings['home_logo']) as $k => $home_logo)
+                        <div class="col-auto">
+                            <img src="{{ $logo.'/'. $home_logo}}" alt="" class="img-fluid" style="width: 130px;">
                         </div>
+                        @endforeach
                     </div>
                 </div>
-            </div> --}}
-
+            </div>
+        </div>
     </section>
 @endif
 <!-- [ Banner ] start -->
