@@ -162,7 +162,7 @@
 @if ($settings['home_status'] == 'on')
     <section class="main-banner bg-primary" id="home">
         <div class="container-offset">
-            <div class="row gy-3 g-0 align-items-center">
+            <div class="row gy-4 g-0 align-items-center">
                 <div class="col-xxl-4 col-md-6">
                     <span class="badge py-2 px-3 bg-white text-dark rounded-pill fw-bold mb-3">
                         {{ $settings['home_offer_text'] }}
@@ -185,10 +185,9 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-xxl-8 col-md-6">
+                <div class="col-xxl-7 col-md-6">
                     <div class="dash-preview">
-                        <img class="img-fluid preview-img" src="{{ $logo . '/' . $settings['home_banner'] }}"
-                            alt="">
+                        <img class="img-fluid preview-img" src="{{ $logo . '/' . $settings['home_banner'] }}" alt="">
                     </div>
                 </div>
             </div>
