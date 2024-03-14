@@ -324,7 +324,7 @@ unset($__errorArgs, $__bag); ?>
                                                             <div class="col-auto">
                                                                 <p class="card-text small text-muted">
                                                                     
-                                                                    <img src="<?php echo e($logo . '/home_logo.png'); ?>" width="70px"
+                                                                    <img src="<?php echo e($logo .'/'. $settings['site_logo']); ?>" width="70px"
                                                                         alt="Image placeholder" data-dz-thumbnail="">
 
                                                                 </p>

@@ -29,8 +29,8 @@
             <div class="card sticky-top" style="top:30px">
                 <div class="list-group list-group-flush" id="useradd-sidenav">
                     <a href="#personal_info" class="list-group-item list-group-item-action border-0">{{__('Personal Info')}} <div class="float-end"><i class="ti ti-chevron-right"></i></div></a>
-
                     <a href="#change_password" class="list-group-item list-group-item-action border-0">{{__('Change Password')}}<div class="float-end"><i class="ti ti-chevron-right"></i></div></a>
+                    <a href="#change_language" class="list-group-item list-group-item-action border-0">{{__('Change Language')}}<div class="float-end"><i class="ti ti-chevron-right"></i></div></a>
                 </div>
             </div>
         </div>
@@ -120,6 +120,18 @@
                     </form>
                 </div>
 
+            </div>
+            <div id="change_language" class="card">
+                <div class="card-header">
+                    <h5>{{__('Change Language')}}</h5>
+                </div>
+                <div class="card-body ms-auto">
+                    <ul class="list-unstyled">
+                        <li>
+                            
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 @endsection

@@ -48,16 +48,15 @@
                         <a href="{{route('profile')}}" class="dropdown-item">
                             <i class="ti ti-user text-dark"></i><span>{{__('Profile')}}</span>
                         </a>
-
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="dropdown-item">
                             <i class="ti ti-power text-dark"></i><span>{{__('Logout')}}</span>
                         </a>
-
                         <form id="frm-logout" action="{{ route('logout') }}" method="POST" class="d-none">
                             {{ csrf_field() }}
                         </form>
 
                     </div>
+                    
                 </li>
 
             </ul>
@@ -66,38 +65,27 @@
             <ul class="list-unstyled">
                 @if( \Auth::user()->type !='client' && \Auth::user()->type !='super admin' )
                     <li class="dropdown dash-h-item drp-notification">
-                        <a class="dash-head-link arrow-none me-0" href="{{ url('chats') }}" aria-haspopup="false"
-                           aria-expanded="false">
+                        <a class="dash-head-link arrow-none me-0" href="{{ url('chats') }}" aria-haspopup="false" aria-expanded="false">
                             <i class="ti ti-brand-hipchat"></i>
-                            <span class="bg-danger dash-h-badge message-toggle-msg  message-counter custom_messanger_counter beep"> {{ $unseenCounter }}<span
-                                    class="sr-only"></span>
+                            <span class="bg-danger dash-h-badge message-toggle-msg  message-counter custom_messanger_counter beep"> {{ $unseenCounter }}<span class="sr-only"></span>
                             </span>
                         </a>
                     </li>
                 @endif
-
                 <li class="dropdown dash-h-item drp-language">
-                    <a
-                        class="dash-head-link dropdown-toggle arrow-none me-0"
-                        data-bs-toggle="dropdown"
-                        href="#"
-                        role="button"
-                        aria-haspopup="false"
-                        aria-expanded="false"
-                    >
+                    <a class="dash-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
                         <i class="ti ti-world nocolor"></i>
                         <span class="drp-text hide-mob">{{ucfirst($LangName->full_name)}}</span>
                         <i class="ti ti-chevron-down drp-arrow nocolor"></i>
                     </a>
                     <div class="dropdown-menu dash-h-dropdown dropdown-menu-end">
                         @foreach ($languages as $code => $language)
-                            <a href="{{ route('change.language', $code) }}"
-                               class="dropdown-item {{ $lang == $code ? 'text-primary' : '' }}">
+                            <a href="{{ route('change.language', $code) }}" class="dropdown-item {{ $lang == $code ? 'text-primary' : '' }}">
                                 <span>{{ucFirst($language)}}</span>
                             </a>
                         @endforeach
-
-                        <h></h>
+                        <h>
+                        </h>
                             @if(\Auth::user()->type=='super admin')
                                 <a  data-url="{{ route('create.language') }}" class="dropdown-item text-primary"  data-ajax-popup="true" data-title="{{__('Create New Language')}}">
                                     {{ __('Create Language') }}
@@ -109,4 +97,4 @@
             </ul>
         </div>
     </div>
-    </header>
+</header>

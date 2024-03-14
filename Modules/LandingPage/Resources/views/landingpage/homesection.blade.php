@@ -232,8 +232,7 @@
                                             <div class="form-group">
                                                 {{ Form::label('Logo', __('Logo'), ['class' => 'form-label']) }}
                                                 <div class="logo-content mt-4">
-                                                    <img id="image1" src="{{ $logo.'/'. $settings['home_logo'] }}"
-                                                        class="big-logo img_setting">
+                                                    <img id="image1" src="{{ $logo.'/'. $settings['home_logo'] }}" class="big-logo img_setting">
                                                 </div>
                                                 <div class="choose-files mt-5">
                                                     <label for="home_logo">
@@ -273,7 +272,7 @@
                                                             <div class="col-auto">
                                                                 <p class="card-text small text-muted">
                                                                     {{-- <img class="rounded" src="{{ $logo.'/placeholder.png' }}" width="70px" alt="Image placeholder" data-dz-thumbnail=""> --}}
-                                                                    <img src="{{ $logo . '/home_logo.png' }}" width="70px"
+                                                                    <img src="{{ $logo .'/'. $settings['site_logo'] }}" width="70px"
                                                                         alt="Image placeholder" data-dz-thumbnail="">
 
                                                                 </p>
