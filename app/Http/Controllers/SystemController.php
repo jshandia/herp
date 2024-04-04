@@ -94,6 +94,40 @@ class SystemController extends Controller
                 }
             }
 
+            if ($request->login_picture_left) {
+
+                $loginPictureLeft = 'login-picture-left.png';
+
+                $dir = 'uploads/logo';
+                $validation = [
+                    'mimes:' . 'png',
+                    'max:' . '20480',
+                ];
+                $path = Utility::upload_file($request, 'login_picture_left', $loginPictureLeft, $dir, $validation);
+                if ($path['flag'] == 1) {
+                    $logo = $path['url'];
+                } else {
+                    return redirect()->back()->with('error', __($path['msg']));
+                }
+            }
+
+            if ($request->login_picture_right) {
+
+                $loginPictureRight = 'login-picture-right.png';
+
+                $dir = 'uploads/logo';
+                $validation = [
+                    'mimes:' . 'png',
+                    'max:' . '20480',
+                ];
+                $path = Utility::upload_file($request, 'login_picture_right', $loginPictureRight, $dir, $validation);
+                if ($path['flag'] == 1) {
+                    $logo = $path['url'];
+                } else {
+                    return redirect()->back()->with('error', __($path['msg']));
+                }
+            }
+
             $settings = Utility::settings();
 
             if (!empty($request->title_text) || !empty($request->color) || !empty($request->SITE_RTL)
@@ -132,7 +166,7 @@ class SystemController extends Controller
                     $post['cust_darklayout'] = $cust_darklayout;
                 }
 
-                unset($post['_token'], $post['company_logo_dark'], $post['company_logo_light'], $post['company_favicon']);
+                unset($post['_token'], $post['company_logo_dark'], $post['company_logo_light'], $post['company_favicon'], $post['company_login_picture_left'], $post['company_login_picture_right'], $post['company_home_background']);
 
                 foreach ($post as $key => $data) {
                     if (in_array($key, array_keys($settings))) {
@@ -436,10 +470,37 @@ class SystemController extends Controller
                     return redirect()->back()->with('error', __($path['msg']));
                 }
 
+                
+                
+
                 \DB::insert(
                     'insert into settings (`value`, `name`,`created_by`) values (?, ?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ', [
                         $favicon,
                         'company_favicon',
+                        \Auth::user()->creatorId(),
+                    ]
+                );
+            }
+            //login left
+            if ($request->company_home_background) {
+                $validation = [
+                    'mimes:' . 'png',
+                    'max:' . '20480',
+                ];
+                //$logoName = 'logo-light.png';
+                $homeBackground = $user->id . '-company-home-background.png';
+                $dir = 'uploads/logo';
+                $path = Utility::upload_file($request, 'company_home_background', $homeBackground, $dir, $validation);
+                if ($path['flag'] == 1) {
+                    $logo = $path['url'];
+                } else {
+                    return redirect()->back()->with('error', __($path['msg']));
+                }
+
+                \DB::insert(
+                    'insert into settings (`value`, `name`,`created_by`) values (?, ?, ?) ON DUPLICATE KEY UPDATE `value` = VALUES(`value`) ', [
+                        $homeBackground,
+                        'company_home_background',
                         \Auth::user()->creatorId(),
                     ]
                 );
@@ -463,7 +524,7 @@ class SystemController extends Controller
                     $post['cust_darklayout'] = $cust_darklayout;
                 }
 
-                unset($post['_token'], $post['company_logo_dark'], $post['company_logo_light'], $post['company_favicon']);
+                unset($post['_token'], $post['company_logo_dark'], $post['company_logo_light'], $post['company_favicon'], $post['company_login_picture_left'], $post['company_login_picture_right'], $post['company_home_background']);
                 foreach ($post as $key => $data) {
                     if (in_array($key, array_keys($settings))) {
 

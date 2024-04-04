@@ -4,6 +4,6 @@
     <span class="dash-micon">
       <i class="ti ti-home"></i>
     </span>
-    <span class="dash-mtext"><?php echo e(__('Dashboard')); ?></span></a>
+    <span class="dash-mtext"><?php echo e(__('Home')); ?></span></a>
   </li>
 <?php endif; ?><?php /**PATH C:\xampp\htdocs\herp\resources\views/partials/admin/items/admin/subitems/dashboard.blade.php ENDPATH**/ ?>

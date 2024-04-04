@@ -4,6 +4,6 @@
     <span class="dash-micon">
       <i class="ti ti-home"></i>
     </span>
-    <span class="dash-mtext">{{ __('Dashboard') }}</span></a>
+    <span class="dash-mtext">{{ __('Home') }}</span></a>
   </li>
 @endif

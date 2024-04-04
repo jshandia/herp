@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 @php
     use App\Models\Utility;
+    use App\Models\WebhookSetting;
 
     $setting = Utility::settings();
     $company_logo = $setting['company_logo_dark'] ?? '';
     $company_logos = $setting['company_logo_light'] ?? '';
     $company_favicon = $setting['company_favicon'] ?? '';
+    $login_picture_left = $setting['login_picture_left'] ?? '';
+    $login_picture_right = $setting['login_picture_right'] ?? '';
 
     $logo = \App\Models\Utility::get_file('uploads/logo/');
 
@@ -29,7 +32,6 @@
     $meta_image = \App\Models\Utility::get_file('uploads/meta/');
     $meta_logo = isset($setting['meta_image']) ? $setting['meta_image'] : '';
     $get_cookie = isset($setting['enable_cookie']) ? $setting['enable_cookie'] : '';
-
 @endphp
 
 {{-- <html lang="en" dir="{{$SITE_RTL == 'on' ? 'rtl' : '' }}"> --}}
@@ -112,8 +114,13 @@
 <body class="{{ $color }}">
     <div class="custom-login">
         <div class="login-bg-img">
+            <!--
             <img src="{{ asset('assets/images/auth/'.$color.'.svg') }}" class="login-bg-1">
             <img src="{{ asset('assets/images/auth/common.svg') }}" class="login-bg-2">
+            -->
+            <img src="{{ $logo . (isset($login_picture_left) && !empty($login_picture_left) ? $login_picture_left : 'login-picture-left.png') . '?' . time() }}" class="login-bg-1">
+            <img src="{{ $logo . (isset($login_picture_right) && !empty($login_picture_right) ? $login_picture_right : 'login-picture-right.png') . '?' . time() }}" class="login-bg-2">
+            
         </div>
         <div class="bg-login bg-primary"></div>
         <div class="custom-login-inner">
@@ -124,13 +131,9 @@
                            
                         <a class="navbar-brand" href="#">
                             @if ($setting['cust_darklayout'] == 'on')
-                                <img class="logo"
-                                    src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-light.png') . '?' . time() }}"
-                                    alt="" loading="lazy"/>
+                                <img class="logo" src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-light.png') . '?' . time() }}" alt="" loading="lazy"/>
                             @else
-                                <img class="logo"
-                                    src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') . '?' . time() }}"
-                                    alt="" loading="lazy"/>
+                                <img class="logo" src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') . '?' . time() }}" alt="" loading="lazy"/>
                             @endif
                         </a>
 
@@ -223,11 +226,7 @@
                 </div>
                 <div class="col-xl-6 img-card-side">
                     <div class="auth-img-content">
-                        <img
-                            src="{{ asset('assets/images/auth/img-auth-3.svg') }}"
-                            alt=""
-                            class="img-fluid"
-                        />
+                        <img src="{{ asset('assets/images/auth/img-auth-3.svg') }}" alt="" class="img-fluid"/>
                         <h3 class="text-white mb-4 mt-5">
                             “Attention is the new currency”
                         </h3>

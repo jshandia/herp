@@ -248,7 +248,7 @@
 .login-bg-1{
     position: absolute;
     bottom: 0;
-    left: 10%;
+    left: 0;
     z-index: 1;
 }
 .login-bg-2{
