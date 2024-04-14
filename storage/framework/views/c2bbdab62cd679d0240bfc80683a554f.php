@@ -1,5 +1,21 @@
 <?php
+$users=\Auth::user();
     $profile=\App\Models\Utility::get_file('uploads/avatar/');
+    $languages=\App\Models\Utility::languages();
+
+    $lang = isset($users->lang)?$users->lang:'en';
+    if ($lang == null) {
+        $lang = 'en';
+    }
+    // $LangName = \App\Models\Language::where('code',$lang)->first();
+    // $LangName =\App\Models\Language::languageData($lang);
+    $LangName = cache()->remember('full_language_data_' . $lang, now()->addHours(24), function () use ($lang) {
+    return \App\Models\Language::languageData($lang);
+    });
+
+    $setting = \App\Models\Utility::settings();
+
+    $unseenCounter=App\Models\ChMessage::where('to_id', Auth::user()->id)->where('seen', 0)->count();
 ?>
 <?php $__env->startSection('page-title'); ?>
     <?php echo e(__('Profile Account')); ?>
@@ -116,12 +132,35 @@
                 <div class="card-header">
                     <h5><?php echo e(__('Change Language')); ?></h5>
                 </div>
-                <div class="card-body ms-auto">
-                    <ul class="list-unstyled">
-                        <li>
-                            
-                        </li>
-                    </ul>
+                <div class="card-body">
+                    <div class="ms-auto">
+                        <ul class="list-unstyled">
+                            <li class="dropdown dash-h-item drp-language">
+                    <a class="dash-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
+                        <i class="ti ti-world nocolor"></i>
+                        <span class="drp-text hide-mob"><?php echo e(ucfirst($LangName->full_name)); ?></span>
+                        <i class="ti ti-chevron-down drp-arrow nocolor"></i>
+                    </a>
+                    <div class="dropdown-menu dash-h-dropdown">
+                        <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $code => $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <a href="<?php echo e(route('change.language', $code)); ?>" class="dropdown-item <?php echo e($lang == $code ? 'text-primary' : ''); ?>">
+                                <span><?php echo e(ucFirst($language)); ?></span>
+                            </a>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <h>
+                        </h>
+                            <?php if(\Auth::user()->type=='super admin'): ?>
+                                <a  data-url="<?php echo e(route('create.language')); ?>" class="dropdown-item text-primary"  data-ajax-popup="true" data-title="<?php echo e(__('Create New Language')); ?>">
+                                    <?php echo e(__('Create Language')); ?>
+
+                                </a>
+                                <a class="dropdown-item text-primary" href="<?php echo e(route('manage.language',[isset($lang)?$lang:'english'])); ?>"><?php echo e(__('Manage Language')); ?></a>
+                            <?php endif; ?>
+                    </div>
+                </li>
+                        </ul>
+                    </div>
+                    
                 </div>
             </div>
         </div>

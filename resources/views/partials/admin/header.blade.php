@@ -72,28 +72,31 @@
                         </a>
                     </li>
                 @endif
-                <li class="dropdown dash-h-item drp-language">
+                <li class="dropdiwn dash-h-item">
                     <a class="dash-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
                         <i class="ti ti-world nocolor"></i>
-                        <span class="drp-text hide-mob">{{ucfirst($LangName->full_name)}}</span>
+                        <span class="drp-text hide-mob">Lorem Ipsum</span>
                         <i class="ti ti-chevron-down drp-arrow nocolor"></i>
                     </a>
-                    <div class="dropdown-menu dash-h-dropdown dropdown-menu-end">
-                        @foreach ($languages as $code => $language)
-                            <a href="{{ route('change.language', $code) }}" class="dropdown-item {{ $lang == $code ? 'text-primary' : '' }}">
-                                <span>{{ucFirst($language)}}</span>
-                            </a>
-                        @endforeach
-                        <h>
-                        </h>
-                            @if(\Auth::user()->type=='super admin')
-                                <a  data-url="{{ route('create.language') }}" class="dropdown-item text-primary"  data-ajax-popup="true" data-title="{{__('Create New Language')}}">
-                                    {{ __('Create Language') }}
-                                </a>
-                                <a class="dropdown-item text-primary" href="{{route('manage.language',[isset($lang)?$lang:'english'])}}">{{ __('Manage Language') }}</a>
-                            @endif
+                    <div class="dropdown-menu dash-h-dropdown">
+                        <a href="#" class="dropdown-item">
+                            <span>Is The Best</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span>Is The Best</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span>Is The Best</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span>Is The Best</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <span>Is The Best</span>
+                        </a>
                     </div>
                 </li>
+                
             </ul>
         </div>
     </div>

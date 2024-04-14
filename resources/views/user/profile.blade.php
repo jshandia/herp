@@ -1,6 +1,22 @@
 @extends('layouts.admin')
 @php
+$users=\Auth::user();
     $profile=\App\Models\Utility::get_file('uploads/avatar/');
+    $languages=\App\Models\Utility::languages();
+
+    $lang = isset($users->lang)?$users->lang:'en';
+    if ($lang == null) {
+        $lang = 'en';
+    }
+    // $LangName = \App\Models\Language::where('code',$lang)->first();
+    // $LangName =\App\Models\Language::languageData($lang);
+    $LangName = cache()->remember('full_language_data_' . $lang, now()->addHours(24), function () use ($lang) {
+    return \App\Models\Language::languageData($lang);
+    });
+
+    $setting = \App\Models\Utility::settings();
+
+    $unseenCounter=App\Models\ChMessage::where('to_id', Auth::user()->id)->where('seen', 0)->count();
 @endphp
 @section('page-title')
     {{__('Profile Account')}}
@@ -125,12 +141,34 @@
                 <div class="card-header">
                     <h5>{{__('Change Language')}}</h5>
                 </div>
-                <div class="card-body ms-auto">
-                    <ul class="list-unstyled">
-                        <li>
-                            
-                        </li>
-                    </ul>
+                <div class="card-body">
+                    <div class="ms-auto">
+                        <ul class="list-unstyled">
+                            <li class="dropdown dash-h-item drp-language">
+                    <a class="dash-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
+                        <i class="ti ti-world nocolor"></i>
+                        <span class="drp-text hide-mob">{{ucfirst($LangName->full_name)}}</span>
+                        <i class="ti ti-chevron-down drp-arrow nocolor"></i>
+                    </a>
+                    <div class="dropdown-menu dash-h-dropdown">
+                        @foreach ($languages as $code => $language)
+                            <a href="{{ route('change.language', $code) }}" class="dropdown-item {{ $lang == $code ? 'text-primary' : '' }}">
+                                <span>{{ucFirst($language)}}</span>
+                            </a>
+                        @endforeach
+                        <h>
+                        </h>
+                            @if(\Auth::user()->type=='super admin')
+                                <a  data-url="{{ route('create.language') }}" class="dropdown-item text-primary"  data-ajax-popup="true" data-title="{{__('Create New Language')}}">
+                                    {{ __('Create Language') }}
+                                </a>
+                                <a class="dropdown-item text-primary" href="{{route('manage.language',[isset($lang)?$lang:'english'])}}">{{ __('Manage Language') }}</a>
+                            @endif
+                    </div>
+                </li>
+                        </ul>
+                    </div>
+                    
                 </div>
             </div>
         </div>
