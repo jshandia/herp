@@ -17,7 +17,7 @@
 
 @endphp
 @section('page-title')
-Welcome!
+Welcome to the app!
 @endsection
 @section('content')
 <div class="row">
