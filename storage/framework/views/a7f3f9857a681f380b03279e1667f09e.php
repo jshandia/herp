@@ -65,14 +65,6 @@
         <div class="ms-auto">
             <ul class="list-unstyled">
                 <?php if( \Auth::user()->type !='client' && \Auth::user()->type !='super admin' ): ?>
-                    <li class="dropdown dash-h-item drp-notification">
-                        <a class="dash-head-link arrow-none me-0" href="<?php echo e(url('chats')); ?>" aria-haspopup="false" aria-expanded="false">
-                            <i class="ti ti-brand-hipchat"></i>
-                            <span class="bg-danger dash-h-badge message-toggle-msg  message-counter custom_messanger_counter beep"> <?php echo e($unseenCounter); ?><span class="sr-only"></span>
-                            </span>
-                        </a>
-                    </li>
-                <?php endif; ?>
                 <li class="dropdiwn dash-h-item">
                     <a class="dash-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" >
                         <i class="ti ti-world nocolor"></i>
@@ -97,7 +89,15 @@
                         </a>
                     </div>
                 </li>
-                
+                <li class="dropdown dash-h-item drp-notification">
+                    <a class="dash-head-link arrow-none me-0" href="<?php echo e(url('chats')); ?>" aria-haspopup="false" aria-expanded="false">
+                        <i class="ti ti-brand-hipchat"></i>
+                        <span class="bg-danger dash-h-badge message-toggle-msg  message-counter custom_messanger_counter beep">
+                            <?php echo e($unseenCounter); ?><span class="sr-only"></span>
+                        </span>
+                    </a>
+                </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

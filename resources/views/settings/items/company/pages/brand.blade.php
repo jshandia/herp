@@ -100,7 +100,7 @@
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="card logo_card">
                     <div class="card-header">
-                        <h5>{{ __('Company Home Background') }}</h5>
+                        <h5>{{ __('Home Background') }}</h5>
                     </div>
                     <div class="card-body pt-0">
                         <div class="setting-card">

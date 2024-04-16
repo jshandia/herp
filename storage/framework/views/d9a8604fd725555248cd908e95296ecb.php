@@ -125,7 +125,7 @@ unset($__errorArgs, $__bag); ?>
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="card logo_card">
                     <div class="card-header">
-                        <h5><?php echo e(__('Company Home Background')); ?></h5>
+                        <h5><?php echo e(__('Home Background')); ?></h5>
                     </div>
                     <div class="card-body pt-0">
                         <div class="setting-card">

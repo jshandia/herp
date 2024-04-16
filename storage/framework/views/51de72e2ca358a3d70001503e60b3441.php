@@ -16,13 +16,15 @@
     $webhookSetting = WebhookSetting::where('created_by', '=', \Auth::user()->creatorId())->get();
 
 ?>
+<?php $__env->startSection('page-title'); ?>
+welcome!
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-lg-12" style="justify-content: center; align-content: top;">
         <img style="opacity:0.5;width:100%;height:85%;object-fit:contain;" src="<?php echo e($logo . '/' . (isset($company_home_background) && !empty($company_home_background) ? $company_home_background : 'company-home-background.png') . '?timestamp=' . time()); ?>" alt="Gambar Transparan">
     </div>
 </div>
-
 <?php $__env->stopSection(); ?>
 
 
