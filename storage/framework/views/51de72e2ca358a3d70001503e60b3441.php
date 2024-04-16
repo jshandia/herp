@@ -17,7 +17,7 @@
 
 ?>
 <?php $__env->startSection('page-title'); ?>
-Welcome!
+Welcome to the app!
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
