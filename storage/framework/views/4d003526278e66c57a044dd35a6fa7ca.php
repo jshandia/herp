@@ -27,7 +27,6 @@
                             <thead>
                                 <tr>
                                     <th><?php echo e(__('Role')); ?> </th>
-                                    <th><?php echo e(__('Permissions')); ?> </th>
                                     <th width="150"><?php echo e(__('Action')); ?> </th>
                                 </tr>
                             </thead>
@@ -36,14 +35,14 @@
                                     <?php if($role->name != 'client'): ?>
                                         <tr class="font-style">
                                             <td class="Role"><?php echo e($role->name); ?></td>
-                                            <td class="Permission">
-                                                <?php $__currentLoopData = $role->permissions()->pluck('name'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permissionName): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <span
-                                                        class="badge rounded p-2 m-1 px-3 bg-primary"><?php echo e($permissionName); ?></span>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </td>
+                                            
                                             <td class="Action">
                                                 <span>
+                                                    <div class="action-btn bg-info ms-2">
+                                                        <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center" data-url="<?php echo e(route('roles.show', $role->id)); ?>" data-ajax-popup="true" data-size="lg" data-bs-toggle="tooltip" title="<?php echo e(__('View')); ?>" data-title="<?php echo e(__('View Permissions')); ?>">
+                                                            <i class="ti ti-eye text-white"></i>
+                                                        </a>
+                                                    </div>
                                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit role')): ?>
                                                         <div class="action-btn bg-info ms-2">
                                                             <a href="#"

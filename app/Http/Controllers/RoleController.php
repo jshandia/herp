@@ -28,6 +28,7 @@ class RoleController extends Controller
     }
 
 
+
     public function create()
     {
         if(\Auth::user()->can('create role'))
@@ -100,6 +101,12 @@ class RoleController extends Controller
 
     }
 
+    public function show(Role $role){
+       
+        return view('role.show', compact('role'));
+    }
+
+    
     public function edit(Role $role)
     {
         if(\Auth::user()->can('edit role'))

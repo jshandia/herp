@@ -27,7 +27,6 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('Role') }} </th>
-                                    <th>{{ __('Permissions') }} </th>
                                     <th width="150">{{ __('Action') }} </th>
                                 </tr>
                             </thead>
@@ -36,14 +35,14 @@
                                     @if ($role->name != 'client')
                                         <tr class="font-style">
                                             <td class="Role">{{ $role->name }}</td>
-                                            <td class="Permission">
-                                                @foreach ($role->permissions()->pluck('name') as $permissionName)
-                                                    <span
-                                                        class="badge rounded p-2 m-1 px-3 bg-primary">{{ $permissionName }}</span>
-                                                @endforeach
-                                            </td>
+                                            
                                             <td class="Action">
                                                 <span>
+                                                    <div class="action-btn bg-info ms-2">
+                                                        <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center" data-url="{{ route('roles.show', $role->id) }}" data-ajax-popup="true" data-size="lg" data-bs-toggle="tooltip" title="{{ __('View') }}" data-title="{{ __('View Permissions') }}">
+                                                            <i class="ti ti-eye text-white"></i>
+                                                        </a>
+                                                    </div>
                                                     @can('edit role')
                                                         <div class="action-btn bg-info ms-2">
                                                             <a href="#"
