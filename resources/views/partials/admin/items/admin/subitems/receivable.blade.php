@@ -11,6 +11,9 @@
     </span>
   </a>
   <ul class="dash-submenu">
+    <li class="dash-item">
+      <a class="dash-link" href="#">{{ __('Overview') }}</a>
+    </li>
      @if (Gate::check('manage customer') || Gate::check('manage proposal') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note'))
      <li class="dash-item {{ Request::route()->getName() == 'invoice.index' || Request::route()->getName() == 'invoice.create' || Request::route()->getName() == 'invoice.edit' || Request::route()->getName() == 'invoice.show' ? ' active' : '' }}">
       <a class="dash-link" href="{{ route('invoice.index') }}">{{ __('Invoice') }}</a>

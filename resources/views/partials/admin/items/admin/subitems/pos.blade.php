@@ -24,11 +24,7 @@
             <a class="dash-link" href="{{ route('pos.report') }}">{{ __('POS') }}</a>
         </li>
         @endcan
-        @can('create barcode')
-        <li class="dash-item {{ Request::route()->getName() == 'pos.barcode' || Request::route()->getName() == 'pos.print' ? ' active' : '' }}">
-            <a class="dash-link" href="{{ route('pos.barcode') }}">{{ __('Print Barcode') }}</a>
-        </li>
-        @endcan
+        
         <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'reports-warehouse' || Request::segment(1) == 'reports-daily-purchase' || Request::segment(1) == 'reports-monthly-purchase' || Request::segment(1) == 'reports-daily-pos' || Request::segment(1) == 'reports-monthly-pos' || Request::segment(1) == 'reports-pos-vs-purchase' ? 'active dash-trigger' : '' }}" href="#crm-report" data-toggle="collapse" role="button" aria-expanded="{{ Request::segment(1) == 'reports-warehouse' || Request::segment(1) == 'reports-daily-purchase' || Request::segment(1) == 'reports-monthly-purchase' || Request::segment(1) == 'reports-daily-pos' || Request::segment(1) == 'reports-monthly-pos' || Request::segment(1) == 'reports-pos-vs-purchase' ? 'true' : 'false' }}">
             <a class="dash-link" href="#">{{ __('Reports') }}
                 <span class="dash-arrow">
@@ -39,9 +35,7 @@
                 <li class="dash-item {{ request()->is('reports-daily-pos') || request()->is('reports-monthly-pos') ? 'active' : '' }}">
                     <a class="dash-link" href="{{ route('report.daily.pos') }}">{{ __('POS') }}</a>
                 </li>
-                <li class="dash-item {{ request()->is('reports-pos-vs-purchase') ? 'active' : '' }}">
-                    <a class="dash-link" href="{{ route('report.pos.vs.purchase') }}">{{ __('Pos VS Purchase') }}</a>
-                </li>
+                
             </ul>
         </li>
         

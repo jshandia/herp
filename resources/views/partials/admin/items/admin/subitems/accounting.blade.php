@@ -1,5 +1,5 @@
 @if (!empty($userPlan) &&  $userPlan->account == 1 && Gate::check('show account dashboard'))
-@if (Gate::check('manage customer') || Gate::check('manage vender') || Gate::check('manage customer') || Gate::check('manage vender') || Gate::check('manage proposal') || Gate::check('manage bank account') || Gate::check('manage bank transfer') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note') || Gate::check('manage bill') || Gate::check('manage payment') || Gate::check('manage debit note') || Gate::check('manage chart of account') || Gate::check('manage journal entry') || Gate::check('balance sheet report') || Gate::check('ledger report') || Gate::check('trial balance report'))
+@if (Gate::check('manage customer') || Gate::check('manage vender') || Gate::check('manage customer') || Gate::check('manage vender') || Gate::check('manage proposal') || Gate::check('manage bank account') || Gate::check('manage bank transfer') || Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note') || Gate::check('manage bill') || Gate::check('manage payment') || Gate::check('manage debit note') || Gate::check('manage chart of account') || Gate::check('manage journal entry') || Gate::check('balance sheet report') || Gate::check('ledger report') || Gate::check('trial balance report') || Gate::check('manage warehouse') || Gate::check('manage purchase') || Gate::check('manage pos') || Gate::check('manage print settings'))
 <li class="dash-item dash-hasmenu {{ Request::route()->getName() == 'print-setting' || Request::segment(1) == 'bank-account' || Request::segment(1) == 'bank-transfer' || Request::segment(1) == 'taxes' || Request::segment(1) == 'payment-method' || Request::segment(1) == 'custom-field' || Request::segment(1) == 'chart-of-account-type' || (Request::segment(1) == 'transaction' &&     Request::segment(2) != 'ledger' &&     Request::segment(2) != 'balance-sheet' &&     Request::segment(2) != 'trial-balance') || Request::segment(1) == 'goal' || Request::segment(1) == 'budget' || Request::segment(1) == 'chart-of-account' || Request::segment(1) == 'journal-entry' || Request::segment(2) == 'ledger' || Request::segment(2) == 'balance-sheet' || Request::segment(2) == 'trial-balance' || Request::segment(2) == 'profit-loss' ? ' active dash-trigger' : '' }}">
     <a href="#!" class="dash-link">
         <span class="dash-micon">
@@ -79,11 +79,7 @@
                 <li class="dash-item {{ Request::route()->getName() == 'report.payables' ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('report.payables') }}">{{ __('Payables') }}</a>
                 </li>
-                @can('stock report')
-                <li class="dash-item {{ Request::route()->getName() == 'report.product.stock.report' ? ' active' : '' }}">
-                    <a href="{{ route('report.product.stock.report') }}" class="dash-link">{{ __('Product Stock') }}</a>
-                </li>
-                @endcan
+                
                 @can('loss & profit report')
                 <li class="dash-item {{ request()->is('reports-monthly-cashflow') || request()->is('reports-quarterly-cashflow') ? 'active' : '' }}">
                     <a class="dash-link" href="{{ route('report.monthly.cashflow') }}">{{ __('Cash Flow') }}</a>
@@ -109,11 +105,15 @@
                     <a class="dash-link" href="{{ route('report.income.vs.expense.summary') }}">{{ __('Income VS Expense') }}</a>
                 </li>
                 @endcan
+                <li class="dash-item {{ request()->is('reports-pos-vs-purchase') ? 'active' : '' }}">
+                    <a class="dash-link" href="{{ route('report.pos.vs.purchase') }}">{{ __('Pos VS Purchase') }}</a>
+                </li>
                 @can('tax report')
                 <li class="dash-item {{ Request::route()->getName() == 'report.tax.summary' ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('report.tax.summary') }}">{{ __('Tax Summary') }}</a>
                 </li>
                 @endcan
+
             </ul>
         </li>
         @endif

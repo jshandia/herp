@@ -14,6 +14,9 @@
                 </span>
             </a>
             <ul class="dash-submenu">
+                <li class="dash-item">
+                    <a class="dash-link" href="#">{{ __('Overview') }}</a>
+                </li>
                 @can('manage purchase')
                     <li class="dash-item">
                         <a class="dash-link" href="{{ route('purchase.index') }}">{{ __('Purchase') }}</a>

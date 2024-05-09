@@ -11,6 +11,9 @@
         </span>
       </a>
       <ul class="dash-submenu">
+          <li class="dash-item">
+            <a class="dash-link" href="#"><?php echo e(__('Overview')); ?></a>
+          </li>
           <?php if(Gate::check('manage vender') || Gate::check('manage bill') || Gate::check('manage payment') || Gate::check('manage debit note')): ?>
           <li
               class="dash-item <?php echo e(Request::route()->getName() == 'bill.index' || Request::route()->getName() == 'bill.create' || Request::route()->getName() == 'bill.edit' || Request::route()->getName() == 'bill.show' ? ' active' : ''); ?>">

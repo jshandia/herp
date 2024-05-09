@@ -11,6 +11,9 @@
     </span>
   </a>
   <ul class="dash-submenu">
+    <li class="dash-item">
+      <a class="dash-link" href="#"><?php echo e(__('Overview')); ?></a>
+    </li>
     <?php if(Gate::check('manage proposal')): ?>
     <li class="dash-item <?php echo e(Request::segment(1) == 'proposal' ? 'active' : ''); ?>">
       <a class="dash-link" href="<?php echo e(route('proposal.index')); ?>"><?php echo e(__('Estimate')); ?></a>

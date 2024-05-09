@@ -11,6 +11,9 @@
     </span>
   </a>
   <ul class="dash-submenu">
+    <li class="dash-item">
+      <a class="dash-link" href="#">{{ __('Overview') }}</a>
+    </li>
     @if (Gate::check('manage proposal'))
     <li class="dash-item {{ Request::segment(1) == 'proposal' ? 'active' : '' }}">
       <a class="dash-link" href="{{ route('proposal.index') }}">{{ __('Estimate') }}</a>

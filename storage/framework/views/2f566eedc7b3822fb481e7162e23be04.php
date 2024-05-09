@@ -14,11 +14,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('action-btn'); ?>
     <div class="float-end">
-        <?php if(\Auth::user()->type == 'company' || \Auth::user()->type == 'HR'): ?>
-            <a href="<?php echo e(route('user.userlog')); ?>" class="btn btn-primary btn-sm <?php echo e(Request::segment(1) == 'user'); ?>"
-                   data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo e(__('User Logs History')); ?>"><i class="ti ti-user-check"></i>
-            </a>
-        <?php endif; ?>
+        
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create user')): ?>
             <a href="#" data-size="lg" data-url="<?php echo e(route('users.create')); ?>" data-ajax-popup="true"  data-bs-toggle="tooltip" title="<?php echo e(__('Create')); ?>"  class="btn btn-sm btn-primary">
                 <i class="ti ti-plus"></i>

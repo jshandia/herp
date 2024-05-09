@@ -25,11 +25,7 @@
             <a class="dash-link" href="<?php echo e(route('pos.report')); ?>"><?php echo e(__('POS')); ?></a>
         </li>
         <?php endif; ?>
-        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create barcode')): ?>
-        <li class="dash-item <?php echo e(Request::route()->getName() == 'pos.barcode' || Request::route()->getName() == 'pos.print' ? ' active' : ''); ?>">
-            <a class="dash-link" href="<?php echo e(route('pos.barcode')); ?>"><?php echo e(__('Print Barcode')); ?></a>
-        </li>
-        <?php endif; ?>
+        
         <li class="dash-item dash-hasmenu <?php echo e(Request::segment(1) == 'reports-warehouse' || Request::segment(1) == 'reports-daily-purchase' || Request::segment(1) == 'reports-monthly-purchase' || Request::segment(1) == 'reports-daily-pos' || Request::segment(1) == 'reports-monthly-pos' || Request::segment(1) == 'reports-pos-vs-purchase' ? 'active dash-trigger' : ''); ?>" href="#crm-report" data-toggle="collapse" role="button" aria-expanded="<?php echo e(Request::segment(1) == 'reports-warehouse' || Request::segment(1) == 'reports-daily-purchase' || Request::segment(1) == 'reports-monthly-purchase' || Request::segment(1) == 'reports-daily-pos' || Request::segment(1) == 'reports-monthly-pos' || Request::segment(1) == 'reports-pos-vs-purchase' ? 'true' : 'false'); ?>">
             <a class="dash-link" href="#"><?php echo e(__('Reports')); ?>
 
@@ -41,9 +37,7 @@
                 <li class="dash-item <?php echo e(request()->is('reports-daily-pos') || request()->is('reports-monthly-pos') ? 'active' : ''); ?>">
                     <a class="dash-link" href="<?php echo e(route('report.daily.pos')); ?>"><?php echo e(__('POS')); ?></a>
                 </li>
-                <li class="dash-item <?php echo e(request()->is('reports-pos-vs-purchase') ? 'active' : ''); ?>">
-                    <a class="dash-link" href="<?php echo e(route('report.pos.vs.purchase')); ?>"><?php echo e(__('Pos VS Purchase')); ?></a>
-                </li>
+                
             </ul>
         </li>
         

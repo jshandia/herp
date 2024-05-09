@@ -15,6 +15,9 @@
                 </span>
             </a>
             <ul class="dash-submenu">
+                <li class="dash-item">
+                    <a class="dash-link" href="#"><?php echo e(__('Overview')); ?></a>
+                </li>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage purchase')): ?>
                     <li class="dash-item">
                         <a class="dash-link" href="<?php echo e(route('purchase.index')); ?>"><?php echo e(__('Purchase')); ?></a>
