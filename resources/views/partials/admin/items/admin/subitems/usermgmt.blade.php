@@ -25,6 +25,7 @@
             <a class="dash-link" href="{{ route('clients.index') }}">{{ __('Client') }}</a>
         </li>
         @endcan
+        
         @can('manage user') 
         <li class="dash-item dash-hasmenu">
             <a class="dash-link" href="#">{{ __('Reports') }}
@@ -36,6 +37,20 @@
                 <li class="dash-item {{ (Request::route()->getName() == 'user.userlog' || Request::segment(1) == 'userlogs') ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('user.userlog') }}">{{__('Logs History')}}</a> 
                 </li>
+            </ul>
+        </li>
+        <li class="dash-item dash-hasmenu">
+            <a class="dash-link" href="#">{{ __('Settings') }}
+                <span class="dash-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="dash-submenu">
+                @can('manage account permissions')
+                <li class="dash-item {{ Request::route()->getName() == 'permissions.index' || Request::segment(1) == 'permissions' || Request::route()->getName() == 'permissions.edit' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('permissions.index') }}">{{ __('Permissions') }}</a>
+                </li>
+                @endcan
             </ul>
         </li>
         @endcan 

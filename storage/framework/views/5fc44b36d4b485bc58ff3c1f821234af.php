@@ -25,6 +25,7 @@
             <a class="dash-link" href="<?php echo e(route('clients.index')); ?>"><?php echo e(__('Client')); ?></a>
         </li>
         <?php endif; ?>
+        
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage user')): ?> 
         <li class="dash-item dash-hasmenu">
             <a class="dash-link" href="#"><?php echo e(__('Reports')); ?>
@@ -37,6 +38,21 @@
                 <li class="dash-item <?php echo e((Request::route()->getName() == 'user.userlog' || Request::segment(1) == 'userlogs') ? ' active' : ''); ?>">
                     <a class="dash-link" href="<?php echo e(route('user.userlog')); ?>"><?php echo e(__('Logs History')); ?></a> 
                 </li>
+            </ul>
+        </li>
+        <li class="dash-item dash-hasmenu">
+            <a class="dash-link" href="#"><?php echo e(__('Settings')); ?>
+
+                <span class="dash-arrow">
+                    <i data-feather="chevron-right"></i>
+                </span>
+            </a>
+            <ul class="dash-submenu">
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage account permissions')): ?>
+                <li class="dash-item <?php echo e(Request::route()->getName() == 'permissions.index' || Request::segment(1) == 'permissions' || Request::route()->getName() == 'permissions.edit' ? ' active' : ''); ?>">
+                    <a class="dash-link" href="<?php echo e(route('permissions.index')); ?>"><?php echo e(__('Permissions')); ?></a>
+                </li>
+                <?php endif; ?>
             </ul>
         </li>
         <?php endif; ?> 
