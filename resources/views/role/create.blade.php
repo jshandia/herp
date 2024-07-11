@@ -1259,7 +1259,7 @@
                 </div>
                 <div class="tab-pane fade" id="others" role="tabpanel" aria-labelledby="pills-contact-tab">
                     @php
-                        $modules=['notification template','support','zoom meeting','messenger'];
+                        $modules=['account permissions','notification template','support','zoom meeting','messenger','logistic'];
                     @endphp
                     <div class="col-md-12">
                         <div class="form-group">
@@ -1276,7 +1276,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     @foreach($modules as $module)
                                         <tr>
                                             <td><input type="checkbox" class="form-check-input ischeck"  data-id="{{str_replace(' ', '', $module)}}" ></td>
@@ -1341,34 +1340,6 @@
                                                             </div>
                                                         @endif
                                                     @endif
-
-
-                                                    @if(in_array('send '.$module,(array) $permissions))
-                                                        @if($key = array_search('send '.$module,$permissions))
-                                                            <div class="col-md-3 custom-control custom-checkbox">
-                                                                {{Form::checkbox('permissions[]',$key,false, ['class'=>'form-check-input isscheck others_checkall isscheck_'.str_replace(' ', '', $module),'id' =>'permission'.$key])}}
-                                                                {{Form::label('permission'.$key,'Send',['class'=>'custom-control-label'])}}<br>
-                                                            </div>
-                                                        @endif
-                                                    @endif
-
-                                                    @if(in_array('create payment '.$module,(array) $permissions))
-                                                        @if($key = array_search('create payment '.$module,$permissions))
-                                                            <div class="col-md-3 custom-control custom-checkbox">
-                                                                {{Form::checkbox('permissions[]',$key,false, ['class'=>'form-check-input isscheck others_checkall isscheck_'.str_replace(' ', '', $module),'id' =>'permission'.$key])}}
-                                                                {{Form::label('permission'.$key,'Create Payment',['class'=>'custom-control-label'])}}<br>
-                                                            </div>
-                                                        @endif
-                                                    @endif
-                                                    @if(in_array('delete payment '.$module,(array) $permissions))
-                                                        @if($key = array_search('delete payment '.$module,$permissions))
-                                                            <div class="col-md-3 custom-control custom-checkbox">
-                                                                {{Form::checkbox('permissions[]',$key,false, ['class'=>'form-check-input isscheck others_checkall isscheck_'.str_replace(' ', '', $module),'id' =>'permission'.$key])}}
-                                                                {{Form::label('permission'.$key,'Delete Payment',['class'=>'custom-control-label'])}}<br>
-                                                            </div>
-                                                        @endif
-                                                    @endif
-
                                                 </div>
                                             </td>
                                         </tr>

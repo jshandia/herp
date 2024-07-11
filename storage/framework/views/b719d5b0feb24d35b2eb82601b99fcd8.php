@@ -23,7 +23,10 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Staff')); ?></a>
+                    <a class="nav-link active" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Logistic')); ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Staff')); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-crm-tab" data-bs-toggle="pill" href="#crm" role="tab" aria-controls="pills-profile" aria-selected="false"><?php echo e(__('CRM')); ?></a>
@@ -1390,7 +1393,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
                 <div class="tab-pane fade" id="others" role="tabpanel" aria-labelledby="pills-contact-tab">
                     <?php
-                        $modules=['notification template','support','zoom meeting','messenger'];
+                        $modules=['account permissions','notification template','support','zoom meeting','messenger','logistic'];
                     ?>
                     <div class="col-md-12">
                         <div class="form-group">
@@ -1407,7 +1410,6 @@ unset($__errorArgs, $__bag); ?>
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     <?php $__currentLoopData = $modules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $module): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <td><input type="checkbox" class="form-check-input ischeck"  data-id="<?php echo e(str_replace(' ', '', $module)); ?>" ></td>
@@ -1479,37 +1481,6 @@ unset($__errorArgs, $__bag); ?>
                                                             </div>
                                                         <?php endif; ?>
                                                     <?php endif; ?>
-
-
-                                                    <?php if(in_array('send '.$module,(array) $permissions)): ?>
-                                                        <?php if($key = array_search('send '.$module,$permissions)): ?>
-                                                            <div class="col-md-3 custom-control custom-checkbox">
-                                                                <?php echo e(Form::checkbox('permissions[]',$key,false, ['class'=>'form-check-input isscheck others_checkall isscheck_'.str_replace(' ', '', $module),'id' =>'permission'.$key])); ?>
-
-                                                                <?php echo e(Form::label('permission'.$key,'Send',['class'=>'custom-control-label'])); ?><br>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    <?php endif; ?>
-
-                                                    <?php if(in_array('create payment '.$module,(array) $permissions)): ?>
-                                                        <?php if($key = array_search('create payment '.$module,$permissions)): ?>
-                                                            <div class="col-md-3 custom-control custom-checkbox">
-                                                                <?php echo e(Form::checkbox('permissions[]',$key,false, ['class'=>'form-check-input isscheck others_checkall isscheck_'.str_replace(' ', '', $module),'id' =>'permission'.$key])); ?>
-
-                                                                <?php echo e(Form::label('permission'.$key,'Create Payment',['class'=>'custom-control-label'])); ?><br>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    <?php endif; ?>
-                                                    <?php if(in_array('delete payment '.$module,(array) $permissions)): ?>
-                                                        <?php if($key = array_search('delete payment '.$module,$permissions)): ?>
-                                                            <div class="col-md-3 custom-control custom-checkbox">
-                                                                <?php echo e(Form::checkbox('permissions[]',$key,false, ['class'=>'form-check-input isscheck others_checkall isscheck_'.str_replace(' ', '', $module),'id' =>'permission'.$key])); ?>
-
-                                                                <?php echo e(Form::label('permission'.$key,'Delete Payment',['class'=>'custom-control-label'])); ?><br>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    <?php endif; ?>
-
                                                 </div>
                                             </td>
                                         </tr>
