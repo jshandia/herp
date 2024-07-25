@@ -22,8 +22,13 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <!--kodingan baru-->
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Staff')); ?></a>
+                    <a class="nav-link active" id="pills-logistic-tab" data-bs-toggle="pill" href="#logistic" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Logistic')); ?></a>
+                </li>
+                <!--end kodingan baru-->
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Staff')); ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-crm-tab" data-bs-toggle="pill" href="#crm" role="tab" aria-controls="pills-profile" aria-selected="false"><?php echo e(__('CRM')); ?></a>
@@ -43,7 +48,250 @@ unset($__errorArgs, $__bag); ?>
 
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="staff" role="tabpanel" aria-labelledby="pills-home-tab">
+                <!--kodingan baru-->
+                <div class="tab-pane fade show active" id="logistic" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <?php
+                        $modules=['barcode', 'stock', 'product & service', 'warehouse'];
+                    ?>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <?php if(!empty($permissions)): ?>
+                                <h6 class="my-3"><?php echo e(__('Assign Logistic Permission to Roles')); ?></h6>
+                                <table class="table table-striped mb-0" id="">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="form-check-input align-middle custom_align_middle" name="logistic_checkall" id="logistic_checkall" >
+                                        </th>
+                                        <th><?php echo e(__('Module')); ?> </th>
+                                        <th><?php echo e(__('Permissions')); ?> </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <?php $__currentLoopData = $modules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $module): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input align-middle ischeck logistic_checkall"  data-id="<?php echo e(str_replace(' ', '', str_replace('&', '', $module))); ?>" ></td>
+                                            <td><label class="ischeck logistic_checkall" data-id="<?php echo e(str_replace(' ', '', str_replace('&', '', $module))); ?>"><?php echo e(ucfirst($module)); ?></label></td>
+                                            <td>
+                                                <div class="row ">
+                                                    <?php if(in_array($module.' report',(array) $permissions)): ?>
+                                                        <?php if($key = array_search($module.' report',$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Report',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <?php if(in_array('add '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('add '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Add',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <?php if(in_array('move '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('move '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Move',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <?php if(in_array('manage '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('manage '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Manage',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('create '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('create '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Create',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('edit '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('edit '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Edit',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('delete '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('delete '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Delete',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('show '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('show '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Show',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+
+                                                    <?php if(in_array('send '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('send '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Send',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <?php if(in_array('create payment '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('create payment '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Create Payment',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('delete payment '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('delete payment '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Delete Payment',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('income '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('income '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Income',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('expense '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('expense '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Expense',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('income vs expense '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('income vs expense '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Income VS Expense',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('loss & profit '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('loss & profit '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Loss & Profit',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('tax '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('tax '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Tax',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <?php if(in_array('invoice '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('invoice '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Invoice',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('bill '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('bill '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Bill',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('duplicate '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('duplicate '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Duplicate',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('balance sheet '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('balance sheet '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Balance Sheet',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('ledger '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('ledger '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Ledger',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('trial balance '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('trial balance '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input logistic_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Trial Balance',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </tbody>
+                                </table>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <!--end kodingan baru-->
+                <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="pills-home-tab">
                     <?php
                         $modules=['user','role','client','product & service','constant unit','constant tax','constant category','company settings'];
                        if(\Auth::user()->type == 'company'){
@@ -1401,6 +1649,11 @@ unset($__errorArgs, $__bag); ?>
 
 <script>
     $(document).ready(function () {
+        /**start kodingan baru**/
+        $("#logistic_checkall").click(function(){
+            $('.logistic_checkall').not(this).prop('checked', this.checked);
+        });
+        /**end kodingan baru**/
         $("#staff_checkall").click(function(){
             $('.staff_checkall').not(this).prop('checked', this.checked);
         });
