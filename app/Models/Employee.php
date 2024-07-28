@@ -17,6 +17,7 @@ class Employee extends Model
         'password',
         'employee_id',
         'branch_id',
+        'warehouse_id',
         'department_id',
         'designation_id',
         'company_doj',

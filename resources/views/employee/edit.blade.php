@@ -88,6 +88,10 @@
                                 </select> --}}
 
                             </div>
+                            <div class="form-group col-md-12">
+                                {{ Form::label('warehouse_id', __('Warehouse'),['class'=>'form-label']) }}
+                                {{ Form::select('warehouse_id', $warehouses,null, array('class' => 'form-control select','id' => 'warehouse_id')) }}
+                            </div>
                             <div class="form-group col-md-6">
                                 {{ Form::label('designation_id', __('Designation'),['class'=>'form-label']) }}
                                 <select class="select form-control " id="designation_id" name="designation_id" ></select>

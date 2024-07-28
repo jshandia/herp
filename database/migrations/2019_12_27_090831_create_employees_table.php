@@ -25,10 +25,11 @@ class CreateEmployeesTable extends Migration
             $table->string('email')->nullable();
             $table->string('password')->nullable();
 
-            $table->string('employee_id')->default('0');;
-            $table->integer('branch_id')->default('0');;
-            $table->integer('department_id')->default('0');;
-            $table->integer('designation_id')->default('0');;
+            $table->string('employee_id')->default('0');
+            $table->integer('branch_id')->default('0');
+            $table->integer('warehouse_id')->nullable();
+            $table->integer('department_id')->default('0');
+            $table->integer('designation_id')->default('0');
             $table->string('company_doj')->nullable();
             $table->string('documents')->nullable();
 

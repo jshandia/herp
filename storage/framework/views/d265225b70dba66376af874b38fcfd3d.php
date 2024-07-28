@@ -29,6 +29,9 @@ unset($__errorArgs, $__bag); ?>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-procurement-tab" data-bs-toggle="pill" href="#procurement" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Procurement')); ?></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-payable-tab" data-bs-toggle="pill" href="#payable" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Payable')); ?></a>
+                </li>
                 <!--end kodingan baru-->
                 <li class="nav-item">
                     <a class="nav-link" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true"><?php echo e(__('Staff')); ?></a>
@@ -217,6 +220,96 @@ unset($__errorArgs, $__bag); ?>
                                                         <?php if($key = array_search('show '.$module,$permissions)): ?>
                                                             <div class="col-md-3 custom-control custom-checkbox">
                                                                 <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input procurement_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Show',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </tbody>
+                                </table>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="payable" role="tabpanel" aria-labelledby="pills-payable-tab">
+                    <?php
+                        $modules=['purchase','vender'];
+                    ?>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <?php if(!empty($permissions)): ?>
+                                <h6 class="my-3"><?php echo e(__('Assign Payable Permission to Roles')); ?></h6>
+                                <table class="table table-striped mb-0" id="">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="form-check-input align-middle custom_align_middle" name="payable_checkall" id="payable_checkall" >
+                                        </th>
+                                        <th><?php echo e(__('Module')); ?> </th>
+                                        <th><?php echo e(__('Permissions')); ?> </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <?php $__currentLoopData = $modules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $module): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input align-middle ischeck payable_checkall"  data-id="<?php echo e(str_replace(' ', '', str_replace('&', '', $module))); ?>" ></td>
+                                            <td><label class="ischeck payable_checkall" data-id="<?php echo e(str_replace(' ', '', str_replace('&', '', $module))); ?>"><?php echo e(ucfirst($module)); ?></label></td>
+                                            <td>
+                                                <div class="row ">
+                                                    <?php if(in_array($module.' report',(array) $permissions)): ?>
+                                                        <?php if($key = array_search($module.' report',$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Report',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('manage '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('manage '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Manage',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('create '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('create '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Create',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('edit '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('edit '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Edit',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('delete '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('delete '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
+
+                                                                <?php echo e(Form::label('permission'.$key,'Delete',['class'=>'custom-control-label'])); ?><br>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if(in_array('show '.$module,(array) $permissions)): ?>
+                                                        <?php if($key = array_search('show '.$module,$permissions)): ?>
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                <?php echo e(Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])); ?>
 
                                                                 <?php echo e(Form::label('permission'.$key,'Show',['class'=>'custom-control-label'])); ?><br>
                                                             </div>
@@ -1597,6 +1690,9 @@ unset($__errorArgs, $__bag); ?>
         });
         $("#procurement_checkall").click(function(){
             $('.procurement_checkall').not(this).prop('checked', this.checked);
+        });
+        $("#payable_checkall").click(function(){
+            $('.payable_checkall').not(this).prop('checked', this.checked);
         });
         /**end kodingan baru**/
         $("#staff_checkall").click(function(){

@@ -18,6 +18,8 @@ use App\Models\Plan;
 use App\Models\Termination;
 use App\Models\User;
 use App\Models\Utility;
+use App\Models\Warehouse;
+
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +67,11 @@ class EmployeeController extends Controller
             $branches         = Branch::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $departments      = Department::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $designations     = Designation::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
+            $warehouses       = Warehouse::pluck('name', 'id')->all();
             $employees        = User::where('created_by', \Auth::user()->creatorId())->get();
             $employeesId      = \Auth::user()->employeeIdFormat($this->employeeNumber());
 
-            return view('employee.create', compact('employees', 'employeesId', 'departments', 'designations', 'documents', 'branches', 'company_settings'));
+            return view('employee.create', compact('employees', 'employeesId', 'departments', 'designations','warehouses', 'documents', 'branches', 'company_settings'));
         }
         else
         {
@@ -151,6 +154,7 @@ class EmployeeController extends Controller
                     'branch_id' => $request['branch_id'],
                     'department_id' => $request['department_id'],
                     'designation_id' => $request['designation_id'],
+                    'warehouse_id' => $request['warehouse_id'],
                     'company_doj' => $request['company_doj'],
                     'documents' => $document_implode,
                     'account_holder_name' => $request['account_holder_name'],
@@ -232,6 +236,7 @@ class EmployeeController extends Controller
             $branches->prepend('Select Branch','');
             $departments  = Department::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $designations = Designation::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
+            $warehouses       = Warehouse::pluck('name', 'id')->all();
             $employee     = Employee::find($id);
 //            $employeesId  = \Auth::user()->employeeIdFormat($employee->employee_id);
             $employeesId  = \Auth::user()->employeeIdFormat(!empty($employee) ? $employee->employee_id : '');
@@ -239,7 +244,7 @@ class EmployeeController extends Controller
             $departmentData  = Department::where('created_by', \Auth::user()->creatorId())->where('branch_id',$employee->branch_id)->get()->pluck('name', 'id');
 
 
-            return view('employee.edit', compact('employee', 'employeesId', 'branches', 'departments', 'designations', 'documents','departmentData'));
+            return view('employee.edit', compact('employee', 'employeesId', 'branches', 'departments','warehouses', 'designations', 'documents','departmentData'));
         }
         else
         {

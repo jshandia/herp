@@ -113,6 +113,14 @@
 
                                     </div>
                                 </div>
+                                <div class="form-group ">
+                                    <?php echo e(Form::label('warehouse_id', __('Select Warehouse*'), ['class' => 'form-label'])); ?>
+
+                                    <div class="form-icon-user">
+                                        <?php echo e(Form::select('warehouse_id', $warehouses, null, ['class' => 'form-control select2', 'id' => 'warehouse_id', 'placeholder' => 'Select Warehouse'])); ?>
+
+                                    </div>
+                                </div>
 
                                 <div class="form-group ">
                                     <?php echo e(Form::label('designation_id', __('Select Designation'), ['class' => 'form-label'])); ?>

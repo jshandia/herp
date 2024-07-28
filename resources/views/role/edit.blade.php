@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" id="pills-procurement-tab" data-bs-toggle="pill" href="#procurement" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Procurement')}}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-payable-tab" data-bs-toggle="pill" href="#payable" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Payable')}}</a>
+                </li>
                 <!--end kodingan baru-->
                 <li class="nav-item">
                     <a class="nav-link" id="pills-staff-tab" data-bs-toggle="pill" href="#staff" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Staff')}}</a>
@@ -196,6 +199,90 @@
                                                         @if($key = array_search('show '.$module,$permissions))
                                                             <div class="col-md-3 custom-control custom-checkbox">
                                                                 {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input procurement_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
+                                                                {{Form::label('permission'.$key,'Show',['class'=>'custom-control-label'])}}<br>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="payable" role="tabpanel" aria-labelledby="pills-payable-tab">
+                    @php
+                        $modules=['purchase','vender'];
+                    @endphp
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @if(!empty($permissions))
+                                <h6 class="my-3">{{__('Assign Payable Permission to Roles')}}</h6>
+                                <table class="table table-striped mb-0" id="">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="form-check-input align-middle custom_align_middle" name="payable_checkall" id="payable_checkall" >
+                                        </th>
+                                        <th>{{__('Module')}} </th>
+                                        <th>{{__('Permissions')}} </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach($modules as $module)
+                                        <tr>
+                                            <td><input type="checkbox" class="form-check-input align-middle ischeck payable_checkall"  data-id="{{str_replace(' ', '', str_replace('&', '', $module))}}" ></td>
+                                            <td><label class="ischeck payable_checkall" data-id="{{str_replace(' ', '', str_replace('&', '', $module))}}">{{ ucfirst($module) }}</label></td>
+                                            <td>
+                                                <div class="row ">
+                                                    @if(in_array($module.' report',(array) $permissions))
+                                                        @if($key = array_search($module.' report',$permissions))
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
+                                                                {{Form::label('permission'.$key,'Report',['class'=>'custom-control-label'])}}<br>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                    @if(in_array('manage '.$module,(array) $permissions))
+                                                        @if($key = array_search('manage '.$module,$permissions))
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
+                                                                {{Form::label('permission'.$key,'Manage',['class'=>'custom-control-label'])}}<br>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                    @if(in_array('create '.$module,(array) $permissions))
+                                                        @if($key = array_search('create '.$module,$permissions))
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
+                                                                {{Form::label('permission'.$key,'Create',['class'=>'custom-control-label'])}}<br>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                    @if(in_array('edit '.$module,(array) $permissions))
+                                                        @if($key = array_search('edit '.$module,$permissions))
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
+                                                                {{Form::label('permission'.$key,'Edit',['class'=>'custom-control-label'])}}<br>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                    @if(in_array('delete '.$module,(array) $permissions))
+                                                        @if($key = array_search('delete '.$module,$permissions))
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
+                                                                {{Form::label('permission'.$key,'Delete',['class'=>'custom-control-label'])}}<br>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                    @if(in_array('show '.$module,(array) $permissions))
+                                                        @if($key = array_search('show '.$module,$permissions))
+                                                            <div class="col-md-3 custom-control custom-checkbox">
+                                                                {{Form::checkbox('permissions[]',$key,$role->permission, ['class'=>'form-check-input payable_checkall isscheck_'.str_replace(' ', '', str_replace('&', '', $module)),'id' =>'permission'.$key])}}
                                                                 {{Form::label('permission'.$key,'Show',['class'=>'custom-control-label'])}}<br>
                                                             </div>
                                                         @endif
@@ -1454,6 +1541,9 @@
         });
         $("#procurement_checkall").click(function(){
             $('.procurement_checkall').not(this).prop('checked', this.checked);
+        });
+        $("#payable_checkall").click(function(){
+            $('.payable_checkall').not(this).prop('checked', this.checked);
         });
         /**end kodingan baru**/
         $("#staff_checkall").click(function(){

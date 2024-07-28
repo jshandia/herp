@@ -101,6 +101,12 @@
                                         {{ Form::select('department_id', $departments, null, ['class' => 'form-control select2', 'id' => 'department_id', 'required' => 'required' , 'placeholder' => 'Select Department']) }}
                                     </div>
                                 </div>
+                                <div class="form-group ">
+                                    {{ Form::label('warehouse_id', __('Select Warehouse*'), ['class' => 'form-label']) }}
+                                    <div class="form-icon-user">
+                                        {{ Form::select('warehouse_id', $warehouses, null, ['class' => 'form-control select2', 'id' => 'warehouse_id', 'placeholder' => 'Select Warehouse']) }}
+                                    </div>
+                                </div>
 
                                 <div class="form-group ">
                                     {{ Form::label('designation_id', __('Select Designation'), ['class' => 'form-label']) }}
