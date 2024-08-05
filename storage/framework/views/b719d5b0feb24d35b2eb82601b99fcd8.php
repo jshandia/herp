@@ -51,9 +51,6 @@ unset($__errorArgs, $__bag); ?>
                 <li class="nav-item">
                     <a class="nav-link" id="pills-account-tab" data-bs-toggle="pill" href="#pos" role="tab" aria-controls="pills-contact" aria-selected="false"><?php echo e(__('POS')); ?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-others-tab" data-bs-toggle="pill" href="#others" role="tab" aria-controls="pills-contact" aria-selected="false"><?php echo e(__('Others')); ?></a>
-                </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <!--kodingan baru-->

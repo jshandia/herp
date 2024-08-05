@@ -30,7 +30,7 @@ class Employee extends Model
         'tax_payer_id',
         'salary_type',
         'salary',
-        'created_by',
+        'created_by'
     ];
 
     public function documents()

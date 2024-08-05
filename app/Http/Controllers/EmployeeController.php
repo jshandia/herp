@@ -19,7 +19,9 @@ use App\Models\Termination;
 use App\Models\User;
 use App\Models\Utility;
 use App\Models\Warehouse;
-
+use Illuminate\Support\Collection;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +64,14 @@ class EmployeeController extends Controller
     {
         if(\Auth::user()->can('create employee'))
         {
+            $employeeRole = Role::where('name', 'employee')->first();
+            if (!$employeeRole) {
+                $employeeRole = Role::create([
+                    'name' => 'employee',
+                    'guard_name' => 'web',
+                    'created_by' => \Auth::user()->creatorId(),
+                ]);
+            }
             $company_settings = Utility::settings();
             $documents        = Document::where('created_by', \Auth::user()->creatorId())->get();
             $branches         = Branch::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
@@ -83,31 +93,27 @@ class EmployeeController extends Controller
     {
         if(\Auth::user()->can('create employee'))
         {
-            $validator = \Validator::make(
-                $request->all(), [
-                                   'name' => 'required',
-                                   'dob' => 'required',
-                                   // 'gender' => 'required',
-                                   'phone' => 'required',
-                                   'address' => 'required',
-                                   'email' => 'required|unique:users',
-                                   'password' => 'required',
-                                   'department_id' => 'required',
-                                   'designation_id' => 'required',
-//                                   'document.*' => 'mimes:jpeg,png,jpg,gif,svg,pdf,doc,zip|max:20480',
-                               ]
+            $validator = \Validator::make($request->all(), [
+                'name' => 'required',
+                'dob' => 'required',
+                // 'gender' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'email' => 'required|unique:users',
+                'password' => 'required',
+                'department_id' => 'required',
+                'designation_id' => 'required',
+                'document.*' => 'nullable|mimes:jpeg,png,jpg,gif,svg,pdf,doc,zip|max:20480',
+                ]
             );
             if($validator->fails())
             {
                 $messages = $validator->getMessageBag();
-
                 return redirect()->back()->withInput()->with('error', $messages->first());
             }
-
             $objUser        = User::find(\Auth::user()->creatorId());
             $total_employee = $objUser->countEmployees();
             $plan           = Plan::find($objUser->plan);
-
             if($total_employee < $plan->max_users || $plan->max_users == -1)
             {
                 $user = User::create(
@@ -138,8 +144,6 @@ class EmployeeController extends Controller
             {
                 $document_implode = null;
             }
-
-
             $employee = Employee::create(
                 [
                     'user_id' => $user->id,
@@ -152,9 +156,9 @@ class EmployeeController extends Controller
                     'password' => Hash::make($request['password']),
                     'employee_id' => $this->employeeNumber(),
                     'branch_id' => $request['branch_id'],
+                    'warehouse_id' => $request['warehouse_id'],
                     'department_id' => $request['department_id'],
                     'designation_id' => $request['designation_id'],
-                    'warehouse_id' => $request['warehouse_id'],
                     'company_doj' => $request['company_doj'],
                     'documents' => $document_implode,
                     'account_holder_name' => $request['account_holder_name'],
