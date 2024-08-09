@@ -77,7 +77,7 @@ class EmployeeController extends Controller
             $branches         = Branch::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $departments      = Department::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $designations     = Designation::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
-            $warehouses       = Warehouse::pluck('name', 'id')->all();
+            $warehouses       = warehouse::pluck('name', 'id')->all();
             $employees        = User::where('created_by', \Auth::user()->creatorId())->get();
             $employeesId      = \Auth::user()->employeeIdFormat($this->employeeNumber());
 
@@ -240,7 +240,7 @@ class EmployeeController extends Controller
             $branches->prepend('Select Branch','');
             $departments  = Department::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
             $designations = Designation::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
-            $warehouses       = Warehouse::pluck('name', 'id')->all();
+            $warehouses       = warehouse::pluck('name', 'id')->all();
             $employee     = Employee::find($id);
 //            $employeesId  = \Auth::user()->employeeIdFormat($employee->employee_id);
             $employeesId  = \Auth::user()->employeeIdFormat(!empty($employee) ? $employee->employee_id : '');
