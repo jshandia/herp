@@ -18,7 +18,7 @@ use App\Models\Plan;
 use App\Models\Termination;
 use App\Models\User;
 use App\Models\Utility;
-use App\Models\Warehouse;
+use App\Models\warehouse;
 use Illuminate\Support\Collection;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
