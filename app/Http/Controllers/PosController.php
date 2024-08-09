@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Utility;
 use App\Models\warehouse;
 use App\Models\WarehouseProduct;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -32,10 +33,19 @@ class PosController extends Controller
 
         if (Auth::user()->can('manage pos'))
         {
-            $customers      = Customer::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'name');
+            $user = Auth::user();
+            $customers = Customer::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'name');
             $customers->prepend('Walk-in-customer', '');
-            $warehouses = warehouse::select('*', \DB::raw("CONCAT(name) AS name"))->where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
-//            $warehouses->prepend('Select Warehouse', '');
+            if($user->type!='employee'){
+                $warehouses = warehouse::select('*', \DB::raw("CONCAT(name) AS name"))->where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
+            }else{
+                $employee = Employee::where('user_id','=',$user->id)->first();
+                if($employee->warehouse_id==null){
+                    $warehouses = warehouse::select('*', \DB::raw("CONCAT(name) AS name"))->where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
+                }else{
+                    $warehouses = warehouse::select('*', \DB::raw("CONCAT(name) AS name"))->where('id', $employee->warehouse_id)->get()->pluck('name', 'id');
+                }
+            }
             $user = Auth::user();
             $details = [
                 'pos_id' => $user->posNumberFormat($this->invoicePosNumber()),
@@ -66,13 +76,9 @@ class PosController extends Controller
 
         if (Auth::user()->can('manage pos') && isset($sess) && !empty($sess) && count($sess) > 0) {
             $user = Auth::user();
-
             $settings = Utility::settings();
-
-
             $customer = Customer::where('name', '=', $request->vc_name)->where('created_by', $user->creatorId())->first();
             $warehouse = warehouse::where('id', '=', $request->warehouse_name)->where('created_by', $user->creatorId())->first();
-
             $details = [
                 'pos_id' => $user->posNumberFormat($this->invoicePosNumber()),
                 'customer' => $customer != null ? $customer->toArray() : [],
@@ -81,7 +87,7 @@ class PosController extends Controller
                 'date' => date('Y-m-d'),
                 'pay' => 'show',
             ];
-
+            
             if (!empty($details['customer']))
             {
                 $warehousedetails = '<h7 class="text-dark">' . ucfirst($details['warehouse']['name'])  . '</p></h7>';

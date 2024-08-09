@@ -120,9 +120,21 @@
 
 
                                 </div>
+                                
                                 <div class="col-md-6">
-                                    <?php echo e(Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required'))); ?>
+                                    <?php if(Auth::user()->type!='employee'): ?>
+                                        <?php echo e(Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required'))); ?>
 
+                                    <?php else: ?>
+                                        <?php if(\App\Models\employee::where('user_id','=',Auth::user()->id)->get('warehouse_id')==null): ?>
+                                            <?php echo e(Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required'))); ?>
+
+                                        <?php else: ?>
+                                            <?php echo e(Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','disabled'=>'disabled'))); ?>
+
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    
                                     <?php echo e(Form::hidden('warehouse_name_hidden', '',['id' => 'warehouse_name_hidden'])); ?>
 
                                 </div>

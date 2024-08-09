@@ -117,8 +117,18 @@
                                     {{ Form::hidden('vc_name_hidden', '',['id' => 'vc_name_hidden']) }}
 
                                 </div>
+                                
                                 <div class="col-md-6">
-                                    {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required')) }}
+                                    @if(Auth::user()->type!='employee')
+                                        {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required')) }}
+                                    @else
+                                        @if(\App\Models\employee::where('user_id','=',Auth::user()->id)->get('warehouse_id')==null)
+                                            {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required')) }}
+                                        @else
+                                            {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','disabled'=>'disabled')) }}
+                                        @endif
+                                    @endif
+                                    
                                     {{ Form::hidden('warehouse_name_hidden', '',['id' => 'warehouse_name_hidden']) }}
                                 </div>
                             </div>
