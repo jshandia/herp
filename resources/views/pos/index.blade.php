@@ -122,7 +122,7 @@
                                     @if(Auth::user()->type!='employee')
                                         {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required')) }}
                                     @else
-                                        @if(\App\Models\employee::where('user_id','=',Auth::user()->id)->get('warehouse_id')==null)
+                                        @if(\App\Models\employee::where('user_id','=',Auth::user()->id)->warehouse_id==null)
                                             {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required')) }}
                                         @else
                                             {{ Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','disabled'=>'disabled')) }}
