@@ -99,7 +99,7 @@
                             <div class="form-group col-md-12">
                                 <?php echo e(Form::label('warehouse_id', __('Warehouse'),['class'=>'form-label'])); ?>
 
-                                <?php echo e(Form::select('warehouse_id', $warehouses,null, array('class' => 'form-control select','id' => 'warehouse_id'))); ?>
+                                <?php echo e(Form::select('warehouse_id', $warehouses,null, array('class' => 'form-control select','id' => 'warehouse_id', 'placeholder' => 'Select Warehouse'))); ?>
 
                             </div>
                             <div class="form-group col-md-6">
