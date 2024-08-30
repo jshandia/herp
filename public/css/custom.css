@@ -272,7 +272,9 @@
     font-size: 0.75rem;
     border-radius: 0.2rem;
 }
-
+.larger-text-print{
+    font-weight: 600;
+}
 .avatar {
     position: relative;
     color: #FFF;

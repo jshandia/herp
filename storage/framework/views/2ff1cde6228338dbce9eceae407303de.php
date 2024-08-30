@@ -126,7 +126,7 @@
                                         <?php echo e(Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required'))); ?>
 
                                     <?php else: ?>
-                                        <?php if(\App\Models\employee::where('user_id','=',Auth::user()->id)->get('warehouse_id')==null): ?>
+                                        <?php if(\App\Models\employee::where('user_id','=',Auth::user()->id)->first()->warehouse_id==null): ?>
                                             <?php echo e(Form::select('warehouse_id', $warehouses,'', array('class' => 'form-control select warehouse_select ','id'=>'warehouse','required'=>'required'))); ?>
 
                                         <?php else: ?>
