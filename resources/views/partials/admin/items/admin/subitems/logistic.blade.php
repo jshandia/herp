@@ -64,7 +64,15 @@
                         <a class="dash-link" href="{{ route('warehouse.index') }}">{{ __('Warehouse') }}</a>
                     </li>
                     @endcan
-                    
+                    <li class="dash-item {{ Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : '' }}">
+                        <a class="dash-link" href="#">{{ __('Stocks') }}</a>
+                    </li>
+                    <li class="dash-item {{ Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : '' }}">
+                        <a class="dash-link" href="#">{{ __('Available Stocks') }}</a>
+                    </li>
+                    <li class="dash-item {{ Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : '' }}">
+                        <a class="dash-link" href="#">{{ __('Bill of Materials') }}</a>
+                    </li>
                     <li class="dash-item {{ Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : '' }}">
                         <a class="dash-link" href="{{ route('product-unit.index') }}">{{ __('Field') }}</a>
                     </li>

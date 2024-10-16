@@ -68,7 +68,15 @@
                         <a class="dash-link" href="<?php echo e(route('warehouse.index')); ?>"><?php echo e(__('Warehouse')); ?></a>
                     </li>
                     <?php endif; ?>
-                    
+                    <li class="dash-item <?php echo e(Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : ''); ?>">
+                        <a class="dash-link" href="#"><?php echo e(__('Stocks')); ?></a>
+                    </li>
+                    <li class="dash-item <?php echo e(Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : ''); ?>">
+                        <a class="dash-link" href="#"><?php echo e(__('Available Stocks')); ?></a>
+                    </li>
+                    <li class="dash-item <?php echo e(Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : ''); ?>">
+                        <a class="dash-link" href="#"><?php echo e(__('Bill of Materials')); ?></a>
+                    </li>
                     <li class="dash-item <?php echo e(Request::segment(1) == 'product-category' || Request::segment(1) == 'product-unit' ? 'active dash-trigger' : ''); ?>">
                         <a class="dash-link" href="<?php echo e(route('product-unit.index')); ?>"><?php echo e(__('Field')); ?></a>
                     </li>

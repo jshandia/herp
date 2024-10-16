@@ -140,6 +140,7 @@ use App\Http\Controllers\WarningController;
 use App\Http\Controllers\ZoomMeetingController;
 use App\Http\Controllers\XenditPaymentController;
 use App\Http\Controllers\MidtransPaymentController;
+use App\Http\Controllers\StocksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -1636,6 +1637,9 @@ Route::group(['middleware' => ['verified']], function () {
 
     //lang enable / disable
     Route::post('disable-language', [LanguageController::class, 'disableLang'])->name('disablelanguage')->middleware(['auth', 'XSS']);
+    
+    //stocks
+    Route::resource('/stocks', StocksController::class)->middleware(['auth', 'XSS', 'revalidate']);
 
     //Expense Module
     Route::get('expense/pdf/{id}', [ExpenseController::class, 'expense'])->name('expense.pdf')->middleware(['XSS', 'revalidate']);
