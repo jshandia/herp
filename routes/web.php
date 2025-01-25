@@ -1641,6 +1641,9 @@ Route::group(['middleware' => ['verified']], function () {
     //stocks
     Route::resource('/stocks', StocksController::class)->middleware(['auth', 'XSS', 'revalidate']);
 
+    //stock variants
+    Route::resource('/stock_variants', StockVariantsController::class)->middleware(['auth', 'XSS', 'revalidate']);
+
     //Expense Module
     Route::get('expense/pdf/{id}', [ExpenseController::class, 'expense'])->name('expense.pdf')->middleware(['XSS', 'revalidate']);
     Route::group(
